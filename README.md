@@ -7,4 +7,4 @@ It currently does not run on Windows 10 and hasn't been compiled against recent 
 Currently the project is released to avoid any future IP conflicts with current employer by establishing work
 that had been achieve prior to employment.
 
-Tim Read 15 May 2021.
+Tim Read 15 May 2021..
