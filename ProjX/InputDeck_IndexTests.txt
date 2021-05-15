@@ -1,0 +1,12 @@
+#index n=10:1 step-2
+#index m=1:5
+
+Array a[2,4,6,8,10]={12,14,16,18,20}
+
+start t=0
+stop t=0.1
+
+b=a
+c[-2+n+1+m]=d[n]
+
+solver RK3

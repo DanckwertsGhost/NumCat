@@ -1,0 +1,63 @@
+// ARExcelFuncs.idl : IDL source for ARExcelFuncs.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ARExcelFuncs.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(ED20BD27-82D1-4D80-BA33-01DE6E5E107C),
+		dual,
+		helpstring("IARFuncs Interface"),
+		pointer_default(unique)
+	]
+	interface IARFuncs : IDispatch
+	{
+		[propget, id(1), helpstring("property Version")] HRESULT Version([out, retval] float *pVal);
+		[id(2), helpstring("Interpolate a value from a key in the given table")] HRESULT Interpolate([in] BSTR* Key, [in] VARIANT* KeyValue, [in] BSTR* LookupKey, [in] BSTR* Sheet, [out, retval] VARIANT* vReturn);
+	};
+/*	[
+		object,
+		uuid(366F26F4-4B3D-4CFA-9047-B33BBB7509D0),
+		dual,
+		helpstring("IARExcelStream Interface"),
+		pointer_default(unique)
+	]
+	interface IARExcelStream : IDispatch
+	{
+		[propget, id(1), helpstring("property Version")] HRESULT Version([out, retval] float *pVal);
+		[id(2), helpstring("method TestCallOne for debug"), hidden] HRESULT TestCallOne([in] IDispatch* pIDisp, [out,retval] VARIANT_BOOL* pVal);
+	};*/
+
+
+
+[
+	uuid(DC44711E-B32A-4FA5-AEB3-9CF29987E8ED),
+	version(1.0),
+	helpstring("ARExcelFuncs 1.0 Type Library")
+]
+library AREXCELFUNCSLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(A0FC5F62-9BB3-4430-87FF-20DBC812BB29),
+		helpstring("ARFuncs Class")
+	]
+	coclass ARFuncs
+	{
+		[default] interface IARFuncs;
+	};
+
+	[
+		uuid(C18BB11A-5500-4B46-8B44-AA2D8FF281E4),
+		helpstring("ARExcelStream Class")
+	]
+	coclass ARExcelStream
+	{
+		[default] interface IDispatch; //IARExcelStream;
+	};
+};

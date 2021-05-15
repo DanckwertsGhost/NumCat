@@ -1,0 +1,25 @@
+// Test input file for new sequence command no 1
+
+a=n*2
+b = a/3
+dc/dt = a
+
+start c=0
+
+//sequence n=1 to 15 step 2
+//iteration n=1 to 15 step 2
+//iteration n{ 3,2,0.004546}
+sequence n{ 3,2,0.004546}
+
+//start n=3
+//stop t>10
+stop t>20
+
+//sync 0.1 start 0
+
+//solver RK4VS
+
+record a,b,n as "c:\temp\seqResults1.csv" for n every 1
+record a,b,n,t as "c:\temp\seqResults2.csv" for t every 1 // 0.1
+dump a,b,n,t as "c:\temp\seqResults1Dump.csv"   for last 20 steps
+

@@ -1,0 +1,26 @@
+HKCR
+{
+	Symlix.NumCatDRM.1 = s 'NumCatDRM Class'
+	{
+		CLSID = s '{4AFCBDCA-FD5C-4207-A097-EF83F4AE6568}'
+	}
+	Symlix.NumCatDRM = s 'NumCatDRM Class'
+	{
+		CLSID = s '{4AFCBDCA-FD5C-4207-A097-EF83F4AE6568}'
+		CurVer = s 'Symlix.NumCatDRM.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {4AFCBDCA-FD5C-4207-A097-EF83F4AE6568} = s 'NumCatDRM Class'
+		{
+			ProgID = s 'Symlix.NumCatDRM.1'
+			VersionIndependentProgID = s 'Symlix.NumCatDRM'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{F236F3A6-7390-4601-AF3D-1E77D079E969}'
+		}
+	}
+}

@@ -1,0 +1,14 @@
+
+ArrayLookup V[1:4] in "c:\temp\vlookup.csv"
+
+z=V*2
+
+x=z[3]/1.234
+
+start t=0
+stop t>1
+
+record t,z[1],z[2],z[4],V[1],x,z[3] as "output1.csv" for t every 0.1
+dump equations as "c:\temp\equations.txt"
+
+solver RK4VS step 1E-5

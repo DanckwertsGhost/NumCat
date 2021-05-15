@@ -1,0 +1,73 @@
+//Example  CONSTILL from ISIM
+
+//8 PLATE CONTINUOUS DISTILLATION COLUMN 
+
+
+ F=1000              //COLUMN FEEDRATE   
+ Q=1                 //SATURATED LIQUID FEED 
+ X=0.5               //FEED COMPOSITION  
+ R=2.25              //REFLUX RATIO  
+ A=2.46              //RELATIVE VOLATILITY   
+ MD=200              //HOLDUP IN SURGE DRUM  
+ MR=400              //HOLDUP IN REBOILER
+ M=50                //HOLDUP ON PLATES  
+ V1=1575             //VAPOUR BOILUP RATE
+// TFIN=10
+ stop t>10 
+// CINT=0.5  
+ solver RK4 step 2.5E-3
+
+//SIM 
+//INITIAL 
+//START UP WITH ZERO LIQUID CONCENTRATION PROFILE
+start X0=0
+start X1=0
+start X2=0
+start X3=0
+start X4=0
+start X5=0
+start X6=0
+start X7=0
+start X8=0
+start X9=0
+   
+//DYNAMIC 
+//FLOWRATES IN COLUMN
+V=V1+(1-Q)*F
+D=V/(R+1)   
+L=R*D   
+L1=F+Q*F
+W=L1-V1 
+
+//VAPOUR PHASE EQUILIBRIA
+Y1=A*X1/(1+(A-1)*X1)
+Y2=A*X2/(1+(A-1)*X2)
+Y3=A*X3/(1+(A-1)*X3)
+Y4=A*X4/(1+(A-1)*X4)
+Y5=A*X5/(1+(A-1)*X5)
+Y6=A*X6/(1+(A-1)*X6)
+Y7=A*X7/(1+(A-1)*X7)
+Y8=A*X8/(1+(A-1)*X8)
+Y9=A*X9/(1+(A-1)*X9)
+
+//CONDENSER AND REFLUX DRUM  
+dX0/dt=(V*Y1-(L+D)*X0)/MD  
+//LIQUID PHASE COMPONENT BALANCES FOR PLATES 1 TO 8  
+dX1/dt=(L*(X0-X1)+V*(Y2-Y1))/M 
+dX2/dt=(L*(X1-X2)+V*(Y3-Y2))/M 
+dX3/dt=(L*(X2-X3)+V*(Y4-Y3))/M 
+dX4/dt=(L*(X3-X4)+V*(Y5-Y4))/M 
+//FEED PLATE 
+dX5/dt=(F*X+L*X4-L1*X5+V1*Y6-V*Y5)/M   
+dX6/dt=(L1*(X5-X6)+V1*(Y7-Y6))/M   
+dX7/dt=(L1*(X6-X7)+V1*(Y8-Y7))/M   
+dX8/dt=(L1*(X7-X8)+V1*(Y9-Y8))/M   
+
+//REBOILER AND COLUMN BASE   
+dX9/dt=(L1*X8-V1*Y9-W*X9)/MR   
+
+record t,X0,X3,X6,X9 as "c:\temp\testoutputconstill.csv" for t every 0.1 
+record t,X0,X1,X2,X3,X4,X5,X6,X7,X8,X9 as "c:\temp\testoutputconstillall.csv" for t every 0.1  
+
+//$ VAL F       =   1200.0    
+ 

@@ -1,0 +1,80 @@
+
+start year =0
+start DCNPV=0
+start OilPrice = 120
+//start DCF = 0.08
+Array DCF[1:5] ={0.04,0.06, 0.08, 0.1,0.12}
+
+
+start Tranche1 = 10
+start Tranche2 = 5
+start Tranche3 = 5
+
+stop year>20
+
+year' = year + 1
+
+start prodyr1 =0
+start prodyr2 =0
+start prodyr3 =0
+
+switch year
+case year <1
+	prodyr1'=1
+default
+	prodyr1'=prodyr1+1
+
+switch year
+case year <1
+	prodyr2'=prodyr2
+case year <2
+	prodyr2'=1
+default
+	prodyr2'=prodyr2+1
+
+switch year
+case year <2
+	prodyr3'=prodyr3
+case year <3
+	prodyr3'=1
+default
+	prodyr3'=prodyr3+1
+
+lookup p1 alias "WellProd" from prodyr1 alias "year" in "c:\temp\ProductionForecast.csv"
+
+switch year
+case year>0
+	prod1 = p1
+default
+	prod1 =0
+
+lookup p2 alias "WellProd" from prodyr2 alias "year" in "c:\temp\ProductionForecast.csv"
+
+switch year
+case year>1
+	   prod2 = p2
+default
+	  prod2 =0
+
+lookup p3 alias "WellProd" from prodyr3 alias "year" in "c:\temp\ProductionForecast.csv"
+
+switch year // 
+case year>2
+	prod3 = p3
+default
+	  prod3 =0
+
+production = prod1*Tranche1 + prod2*Tranche2 + prod3*Tranche3
+
+lookup Capital from year in "c:\temp\CapitalSpend.csv" 
+
+Value = production*OilPrice - Capital
+DiscountedValue = Value/((1+DCF)^year)
+DCNPV' = DCNPV+DiscountedValue
+SumNPV=DCNPV+DiscountedValue
+
+
+advance
+
+record  year,Cap,production,DiscountedValue[1],DCNPV[1],SumNPV[1]  as "c:\temp\Analysis.csv" for year every 1
+

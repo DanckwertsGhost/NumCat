@@ -1,0 +1,9 @@
+#define IDH_SYMOPTIONS		1000
+#define IDH_SYMLANG             1001
+#define IDH_SYMADDIN            1002
+#define IDH_SYMEDITOR		1003
+#define IDH_SYMADDMODEL		1004
+#define IDH_SYMSTART		1005
+#define IDH_FNUMCATTRIGGER      1006
+#define IDH_FNUMCATRL		1007
+#define IDH_SYMCELLFUNCS        1008

@@ -1,0 +1,213 @@
+// Example  MUBATCH from ISIM
+//  MULTICOMPONENT BATCH DISTILLATION
+//  ASSUMPTIONS ARE THE SAME AS IN BSTILL, EXCEPT THAT THE
+// PLATE DYNAMICS ARE NOW EXCLUDED FROM THE ANALYSIS
+
+start MB=100    //Molar holdup in still
+ M0=100      //Molar holdup in reflux drum
+ V=10       //Vapor boil up rate
+ R=10       //Reflux rate
+ AA=2.0     //Relative volatilities
+ AB=1.5
+ AC=1.0
+ AD=0.5
+ stop t>1000
+ //CINT=2
+ solver RK4VS step 2.5E-3
+ //NOCI=10
+ //realtime 4
+
+SIM
+
+INITIAL
+
+start XA8=0.25 // Initial Still Concentrations
+start XB8=0.25
+start XC8=0.25
+//start XD8=0.25
+//start XD0=1
+//start XD1=1
+//start XD2=1
+//start XD3=1
+//start XD4=1
+//start XD5=1
+//start XD6=1
+//start XD7=1
+//  ALL OTHER CONCENTRATIONS ARE IMPLICITLY 
+//  SET TO ZERO, USING THE ISIM DEFAULT VALUES
+start XA0=0
+start XB0=0
+start XC0=0
+
+//start XA1=0
+//start XB1=0
+//start XC1=0
+
+//start XA2=0
+//start XB2=0
+//start XC2=0
+
+//start XA3=0
+//start XB3=0
+//start XC3=0
+
+//start XA4=0
+//start XB4=0
+//start XC4=0
+
+//start XA5=0
+//start XB5=0
+//start XC5=0
+
+//start XA6=0
+//start XB6=0
+//start XC6=0
+
+//start XA7=0
+//start XB7=0
+//start XC7=0
+
+DYNAMIC
+//  LIQUID AND VAPOUR FLOWRATES
+D=V/(R+1)
+L=V-D
+
+// New order of equations
+R1=(R+1)
+
+XD8=1-XA8-XB8-XC8
+
+SUMA8=AA*XA8+AB*XB8+AC*XC8+AD*XD8
+YA8=AA*XA8/SUMA8
+YB8=AB*XB8/SUMA8
+YC8=AC*XC8/SUMA8
+YD8=1-YA8-YA8-YA8
+
+XA7=(R1*YA8-XA0)/R
+XB7=(R1*YB8-XB0)/R
+XC7=(R1*YC8-XC0)/R
+XD7=1-XA7-XB7-XC7
+SUMA7=AA*XA7+AB*XB7+AC*XC7+AD*XD7
+
+YA7=AA*XA7/SUMA7
+YB7=AB*XB7/SUMA7
+YC7=AC*XC7/SUMA7
+YD7=1-YA7-YB7-YC7
+
+XA6=(R1*YA7-XA0)/R
+XB6=(R1*YB7-XB0)/R
+XC6=(R1*YC7-XC0)/R
+XD6=1-XA6-XB6-XC6
+SUMA6=AA*XA6+AB*XB6+AC*XC6+AD*XD6
+
+YA6=AA*XA6/SUMA6
+YB6=AB*XB6/SUMA6
+YC6=AC*XC6/SUMA6
+YD6=1-YA6-YB6-YC6
+
+XA5=(R1*YA6-XA0)/R
+XB5=(R1*YB6-XB0)/R
+XC5=(R1*YC6-XC0)/R
+XD5=1-XA5-XB5-XC5
+SUMA5=AA*XA5+AB*XB5+AC*XC5+AD*XD5
+
+YA5=AA*XA5/SUMA5
+YB5=AB*XB5/SUMA5
+YC5=AC*XC5/SUMA5
+YD5=1-YA5-YB5-YC5
+
+XA4=(R1*YA5-XA0)/R
+XB4=(R1*YB5-XB0)/R
+XC4=(R1*YC5-XC0)/R
+XD4=1-XA4-XB4-XC4
+SUMA4=AA*XA4+AB*XB4+AC*XC4+AD*XD4
+
+YA4=AA*XA4/SUMA4
+YB4=AB*XB4/SUMA4
+YC4=AC*XC4/SUMA4
+YD4=1-YA4-YB4-YC4
+
+//XA3=(R1*YA6-XA0)/R
+//XB3=(R1*YB6-XB0)/R
+//XC3=(R1*YC6-XC0)/R
+XA3=(R1*YA4-XA0)/R
+XB3=(R1*YB4-XB0)/R
+XC3=(R1*YC4-XC0)/R
+XD3=1-XA3-XB3-XC3
+SUMA3=AA*XA3+AB*XB3+AC*XC3+AD*XD3
+
+YA3=AA*XA3/SUMA3
+YB3=AB*XB3/SUMA3
+YC3=AC*XC3/SUMA3
+YD3=1-YA3-YB3-YC3
+
+XA2=(R1*YA3-XA0)/R
+XB2=(R1*YB3-XB0)/R
+XC2=(R1*YC3-XC0)/R
+XD2=1-XA2-XB2-XC2
+SUMA2=AA*XA2+AB*XB2+AC*XC2+AD*XD2
+
+YA2=AA*XA2/SUMA2
+YB2=AB*XB2/SUMA2
+YC2=AC*XC2/SUMA2
+YD2=YA2-YB2-YC2
+
+XA1=(R1*YA2-XA0)/R
+XB1=(R1*YB2-XB0)/R
+XC1=(R1*YC2-XC0)/R
+XD1=1-XA1-XB1-XC1
+SUMA1=AA*XA1+AB*XB1+AC*XC1+AD*XD1
+
+YA1=AA*XA1/SUMA1
+YB1=AB*XB1/SUMA1
+YC1=AC*XC1/SUMA1
+YD1=YA1-YB1-YC1
+
+
+//  VAPOUR COMPOSITIONS ON PLATES 1 TO 7
+
+
+
+//  REFLUX DRUM DYNAMICS
+dXA0/dt=(V*YA1-(L+D)*XA0)/M0
+dXB0/dt=(V*YB1-(L+D)*XB0)/M0
+dXC0/dt=(V*YC1-(L+D)*XC0)/M0
+XD0=1-XA0-XB0-XC0
+
+//TrachXDO=1-XA0-XB0-XC0
+//TrachE1=-XA0-XB0-XC0
+//TrachE2=-XB0-XC0
+//TrachE3=1+TrachE1
+
+//N1 = 0.000934125
+//N2 = 9.35466E-005
+//N3 = 3.65039E-006
+
+//dN0 = 1-N1-N2-N3
+
+//  LIQUID COMPOSITIONS ON PLATES 1 TO 7
+//  Liquid Plate Dynamics neglected
+
+
+//   STILL DYNAMICS
+dMB/dt=L-V
+dXA8/dt=(L*XA7-V*YA8)/MB
+dXB8/dt=(L*XB7-V*YB8)/MB
+dXC8/dt=(L*XC7-V*YC8)/MB
+
+//TOTAL DISTILLATE
+dDIST/dt=D
+
+
+//PLOT T,XA0,0,TFIN,0,1
+record t,XA0,XB0,XC0,XD0,XA8,XB8,XC8,XD8 as "c:\temp\testoutputmustill.csv" for t every 1
+dump t,XA0,XB0,XC0,XD0,XA8,XB8,XC8,XD8 as "c:\temp\dump.csv" for last 10 steps
+record t,XA0,XA1,XA2,XA3,XA4,XA5,XA6,XA7,XA8 as "c:\temp\testoutputmustill_up.csv" for t every 1
+record t,DIST,MB,L,V as "c:\temp\testoutputmustill_DIST.csv" for t every 1
+DDEserver t,DIST,MB,L,V,XA0,XB0,XC0,XD0,XA8,XB8,XC8,XD8 as "MyServer1" every 1 sec
+
+//record t,XD0,TrachXDO,XA0,XB0,XC0,TrachE1,TrachE2,TrachE3,dN0 as "c:\temp\testoutputmustill_XD0.csv" for t every 1
+
+//PREPARE T,YA1,YB1,YC1,YD1,YA8,YB8,YC8,YD8
+//PREPARE T,XA2,XA4,XA6,R,DIST
+//OUTPUT T,XA0,XB0,XC0,XD0,XA8,XB8,XC8,XD8

@@ -1,0 +1,26 @@
+HKCR
+{
+	Symlix.ARRunProgress.1 = s 'ARRunProgress Class'
+	{
+		CLSID = s '{A6210167-B6D4-4C0F-8AE4-5D37F6C1B628}'
+	}
+	Symlix.ARRunProgress = s 'ARRunProgress Class'
+	{
+		CLSID = s '{A6210167-B6D4-4C0F-8AE4-5D37F6C1B628}'
+		CurVer = s 'Symlix.ARRunProgress.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {A6210167-B6D4-4C0F-8AE4-5D37F6C1B628} = s 'ARRunProgress Class'
+		{
+			ProgID = s 'Symlix.ARRunProgress.1'
+			VersionIndependentProgID = s 'Symlix.ARRunProgress'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{F236F3A6-7390-4601-AF3D-1E77D079E969}'
+		}
+	}
+}

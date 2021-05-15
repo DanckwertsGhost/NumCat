@@ -1,0 +1,49 @@
+// Example CONTUN
+
+#define LimitFlow  {min=0,max=30}
+
+dim Ws as LimitFlow
+
+// Controller tuning problem in a stirred water heater
+
+start M=50           // Mass in tank
+start Cp=1           // Specific heat
+start W0=250         // Feed rate
+start T0=20          // Feed temperature
+start Lambda=537     // Latent heat of vaporization
+start Ws=0.2        // Average steam mass flow rate
+start Kc=1.5         // Proportional gain
+//start Ki=10          // Integral time Start
+start TRset=40       // Set temperature of tank
+start TAUc=0.1       // Time Start of thermocouple
+start TAUw=0.3       // Time Start of thermowell
+start TAUi=  0.1 //Time Start of integral control
+//start CINT=0.1
+stop t>30
+//NOCI=3
+
+
+//INITIAL
+TR=T0 @ t=0
+W=W0 @ t=0
+TC=T0  @ t=0
+TW=T0  @ t=0
+EPS0=TRset-TC  @ t=0
+
+// DYNAMIC
+//STEP CHANGES IN WATER FLOW
+W=6*W0 @ t=10
+W=W0 @ t=20
+
+dTR/dt=W/M*(T0-TR)+Ws*Lambda/(M*Cp)
+dTC/dt=(TW-TC)/TAUc
+dTW/dt=(TR-TW)/TAUw
+
+EPS=(TRset-TC)-EPS0
+d_EPS/dt=EPS
+Ws=Ws0+Kc*EPS+(Kc/TAUi)*_EPS //INTG(=EPS,EPS0)
+
+solver RK4VS step 1E05
+
+record t,TR,TC,TW,W,Ws,_EPS as "Flow1.csv" for t every 1
+

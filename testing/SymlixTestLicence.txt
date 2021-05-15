@@ -1,0 +1,21 @@
+Symlix End user license agreement
+---------------------------------
+
+Copyright © 2008 Aston Read Limited. The agreement is covered by English law.
+
+1) A Big thank you for agreeing to test this software ! ( Details of how to feed back on the testing experience will be provided in the help file )
+2) The licence below is to protect the property of the company, so please forgive the direct language.
+
+This software is provided 'as-is', without any express or implied warranty. In no event will the authors be held liable for any damages arising from the use of this software.
+
+Permission is granted to anyone to use this software for the purpose of testing the software only. It is not to be put to other uses and as a work under development should not be seen a fit for any purpose such as commerical activity or education.
+
+The software may be time limited and remains the property of Aston Read Limited and the user agrees to delete this software from their system, using the provided uninstall program, if requested to do so by Aston Read Limited.
+
+There are technological measures in this Software that are designed to prevent unlicensed or illegal use of the Software. You agree that Aston Read Limited may use these measures to protect Aston Read Limited against software piracy. This Software may contain enforcement technology that limits the ability to install and uninstall the Software on a computer to not more than a finite number of times for a finite number of computers.
+
+This License and the Software containing enforcement technology require activation as further set forth in the documentation.
+
+The Software will only operate for a finite period of time prior to Software activation by you. During activation, you will provide your unique product key accompanying the Software and computer configuration in the form of an numeric code over the Internet to verify the authenticity of the Software. If you do not complete the activation within the finite period of time set forth in the documentation, or as prompted by the Software, the Software will cease to function until activation is complete, which will restore Software functionality.
+
+In the event that you are not able to activate the Software over the Internet, or through any other method specified during the activation process, You may contact Aston Read Limited Customer Support using the information provided by Aston Read Limited during activation, or as may be set forth in the documentation.

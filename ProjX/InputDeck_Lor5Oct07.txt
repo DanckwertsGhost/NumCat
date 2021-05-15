@@ -1,0 +1,64 @@
+
+s=10
+r=28
+b=2.400001
+
+dx1/dt = s*(-x1+x2)
+// Basic input deck that is expected to pass
+
+// equations
+dx2/dt = r*x1-x2-x1*x3
+dx3/dt = -b*x3+x1*x2
+dx4/dt = r*s // delibrate unnecessary
+dx5/dt = 1
+dx6/dt = -1
+
+x1=-16.764099 @ t=0
+x2=-21.469 @ t=0
+x3=5 @ t=0
+x4=0 @ t=0
+// The statement below needs to be checked - doesn't seem to work
+x6=25 @ t=9
+start x5=0
+start x6=10
+
+// start of switch test
+switch x1 // could do this as Equation keyword plus one - would have to be switch, case, default
+case x1>5
+	g=10
+case x1>0
+	g=5
+default
+	g=x1
+
+dist_calc = (x5^2+x6^2)^0.5
+//record t,x1,x2,dist as "c:\temp\testlookup2d.csv" for t every 1 // think this should be every 0.1 variable
+
+//lookup dist from x5,x6 in "c:\temp\qry_Dist.csv" cache 0
+//record t,x5,x6,dist_calc,dist as "c:\temp\testlookup2dResults.csv" for t every 0.1 // think this should be every 0.1 variable
+
+//lookup l from x1,x2,x4 in "c:\temp\lookup.csv" cache 0
+//record t,x1,x2,x4,l as "c:\temp\testoutputlookup.csv" for t every 0.1 // think this should be every 0.1 variable
+
+//lookup q from t in "c:\temp\testlookupx1.csv" cache 0
+//record t,x1,q as "c:\temp\testlookupq.csv" for t every 0.1 // think this should be every 0.1 variable
+
+commands for simulation run(s)
+
+start t=0
+stop t>10 // default should be t>100, not going to allow = here .... at the moment
+stop x1>2500
+//record t,x1,x2,x3,x4,g as "c:\temp\testoutput.csv" for t every 1 // think this should be every 0.1 variable
+record t,x1,x2,x5,x6 as "c:\temp\testoutput2.csv" for t every 0.1 // think this should be every 0.1 variable
+//record t,x1,x2 as "c:\temp\testoutput3.csv" for x1 every 1 // think this should be every 0.1 variable
+
+//solver RK5VS step 2.5E-4
+//solver RK5VS step 1
+solver RK4VS step 2.5E-4 tolerance 1E-5
+pace 0.001
+pace 1
+
+// with a few simple commands it would be possible to run for multiple items
+
+
+

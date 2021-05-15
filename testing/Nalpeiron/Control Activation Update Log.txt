@@ -1,0 +1,9 @@
+[09/10/2008 14:59:16] Success	Update started: C:\Inetpub\ftproot\Installation\testing\Nalpeiron\update.exe
+[09/10/2008 14:59:16] Notice	Update engine version: 2.0.6.0
+[09/10/2008 14:59:16] Notice	Product: Control Activation, version %ProductVer%
+[09/10/2008 14:59:16] Success	Language set: Primary = 9, Secondary = 2
+[09/10/2008 14:59:17] Success	Load plugin: C:\DOCUME~1\tim\LOCALS~1\Temp\_ir_tu2_temp_0\IRZip.lmd
+[09/10/2008 14:59:17] Success	Include script: _TU20_Global_Functions.lua
+[09/10/2008 14:59:20] Success	Language set: Primary = 9, Secondary = 1
+[09/10/2008 14:59:20] Success	Run client data event: Client Script
+[09/10/2008 14:59:20] Notice	Exit update process (Return code: 0)

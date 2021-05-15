@@ -1,0 +1,26 @@
+HKCR
+{
+	Symlix.NumCatExcelLocalRes.1 = s 'NumCatExcelLocalRes Class'
+	{
+		CLSID = s '{8E04407D-E8B5-45E6-A935-74A54D9C77E5}'
+	}
+	Symlix.NumCatExcelLocalRes = s 'NumCatExcelLocalRes Class'
+	{
+		CLSID = s '{8E04407D-E8B5-45E6-A935-74A54D9C77E5}'
+		CurVer = s 'Symlix.NumCatExcelLocalRes.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {8E04407D-E8B5-45E6-A935-74A54D9C77E5} = s 'NumCatExcelLocalRes Class'
+		{
+			ProgID = s 'Symlix.NumCatExcelLocalRes.1'
+			VersionIndependentProgID = s 'Symlix.NumCatExcelLocalRes'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{F236F3A6-7390-4601-AF3D-1E77D079E969}'
+		}
+	}
+}

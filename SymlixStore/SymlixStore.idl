@@ -1,0 +1,152 @@
+// SymlixStore.idl : IDL source for SymlixStore.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SymlixStore.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+
+// common stream states to allow control of reading a stream
+typedef enum {streamEmpty=2, hasStreamInfo, streamLoaded, streamReadline, streamWriteLine, streamEnd, streamFail } enumARStream; 
+typedef enum {formatCSV=2,formatFreeText} enumARWriteHint;
+typedef enum {readFormatCSV=2,readFormatFreeText} enumARReadHint;
+typedef enum {esioFormula=2,esioNotes,esioAuthor,esioLastRev,esioRWED} enumARIODataType;
+
+
+/*	[
+		object,
+		uuid(F42DEF6D-E06C-4CF1-814B-BC4731EF4EA8),
+		dual,
+		helpstring("ITestObject3 Interface"),
+		pointer_default(unique)
+	]
+	interface ITestObject3 : IDispatch
+	{
+		[propget, id(1), helpstring("property symlix_stream_state")] HRESULT symlixStreamState([out, retval] enumSymlixStream *pVal);
+		[id(2), helpstring("method loadStream")] HRESULT loadStream([in] BSTR* pbstrKey, [out,retval] enumSymlixStream* pVal);
+		[id(3), helpstring("method readLine")] HRESULT readLine([out,retval] BSTR* pbstrLine);//, [out,retval] enumSymlixStream* pVal);
+//		[id(4), helpstring("method gotoFirstLine")] HRESULT gotoFirstLine([out,retval] enumSymlixStream *pVal);
+		[id(4), helpstring("method twoPlusTwo")] HRESULT twoPlusTwo([out,retval] long* pVal);
+	};*/
+/*	[
+		object,
+		uuid(CD777951-A524-4BA2-8769-3E905BD4F3C1),
+		dual,
+		helpstring("ITestObject4 Interface"),
+		pointer_default(unique)
+	]
+	interface ITestObject4 : IDispatch
+	{
+		[id(1), helpstring("method twoPlusTwo")] HRESULT twoPlusTwo([out,retval] long* pVal);
+	};*/
+
+	[
+		object,
+		uuid(2CEB4397-105D-42F4-B84A-016E2E5155AF),
+		dual,
+		helpstring("IARStream Interface"),
+		pointer_default(unique)
+	]
+	interface IARStream : IDispatch
+	{
+		[propget, id(1), helpstring("property stream_state")] HRESULT StreamState([out, retval] enumARStream *pVal);
+		[id(2), helpstring("method loadStream")] HRESULT loadStream([in] BSTR* pbstrKey, [in] enumARReadHint esrh,[out,retval] enumARStream* pVal);
+		[id(3), helpstring("method readLine")] HRESULT readLine([out,retval] BSTR* pbstrLine);
+		[id(4), helpstring("method gotoFirstLine")] HRESULT gotoFirstLine([out,retval] enumARStream *pVal);
+		[id(5), helpstring("method lastLineExtra")] HRESULT lastLineExtra([in] enumARIODataType esType, [out,retval] BSTR* pbstr);
+		[id(6), helpstring("method AddWatchObject")] HRESULT AddWatchObject([in] IDispatch* pIDisp, [out,retval] VARIANT_BOOL *pOK);
+		[id(7), helpstring("method SetDataSystem")] HRESULT SetDataSystem([in] IDispatch* pIDisp, [out,retval] VARIANT_BOOL *pOK);
+	};
+
+	[
+		object,
+		uuid(9AB3CC26-6A0A-4EDF-9AC5-B37F5CC8B894),
+		dual,
+		helpstring("IARWriteStream Interface"),
+		pointer_default(unique)
+	]
+	interface IARWriteStream : IDispatch
+	{
+		[id(1), helpstring("method loadStream")] HRESULT loadStream([in] BSTR* pbstrKey, [in] enumARWriteHint hint,[out,retval] enumARStream* pVal);
+		[id(2), helpstring("method writeLine")] HRESULT writeLine([in] BSTR* pbstrKey, [out,retval] enumARStream* pVal);
+		[propget, id(3), helpstring("property ARStreamState")] HRESULT StreamState([out, retval] enumARStream *pVal);
+		[id(4), helpstring("method closeStream")] HRESULT closeStream([out,retval] enumARStream* pVal);
+		[id(5), helpstring("method prepareLineWriteExtra")] HRESULT prepareLineWriteExtra([in] enumARIODataType esType, [in] BSTR* pbstr, [out,retval] VARIANT_BOOL* pVal);
+		[id(6), helpstring("method AddWatchObject")] HRESULT AddWatchObject([in] IDispatch* pIDisp, [out,retval] VARIANT_BOOL *pOK);
+		[id(7), helpstring("method SetDataSystem")] HRESULT SetDataSystem([in] IDispatch* pIDisp, [out,retval] VARIANT_BOOL *pOK);
+	};
+
+
+	[
+		object,
+		uuid(511B72BC-0641-4BD9-ADB0-F0EFFA0EFD26),
+		dual,
+		helpstring("IARDataStore Interface"),
+		pointer_default(unique)
+	]
+	interface IARDataStore : IDispatch
+	{
+		[id(1), helpstring("method tryToGetARStream")] HRESULT tryToGetARStream([in] BSTR* pbstrKey, [in] enumARReadHint esrh, [out,retval] IARStream** ppSymlixStream);
+		[id(2), helpstring("method doChecks")] HRESULT doChecks([out,retval] VARIANT_BOOL* pOK);
+		[id(3), helpstring("method isAvailable")] HRESULT isAvailable([in] BSTR* pbstrKey, [out,retval] VARIANT_BOOL* pOK);
+		[id(4), helpstring("method tryToGetARWriteStream")] HRESULT tryToGetARWriteStream([in] BSTR *pbstrKey, [in] enumARWriteHint eswh, [out,retval] IARWriteStream** ppSymlixWriteStream);
+		[id(5), helpstring("method isAvailableForWrite")] HRESULT isAvailableForWrite([in] BSTR *pbstrKey, [out,retval] VARIANT_BOOL *pOK);
+		[propget, id(6), helpstring("property Version")] HRESULT Version([out, retval] float *pVal);
+		[propget, id(7), helpstring("property VersionDescription")] HRESULT VersionDescription([out, retval] BSTR *pVal);
+		[id(8), helpstring("method to Add watch objects")] HRESULT AddWatchObject([in] IDispatch* pIDisp, [out,retval] VARIANT_BOOL *pOK);
+		[id(9), helpstring("method SetDataSystem")] HRESULT SetDataSystem([in] IDispatch* pIDisp, [out,retval] VARIANT_BOOL *pOK);
+	};
+
+[
+	uuid(CF2EF9CB-1D56-4260-8C06-5A5EBC72EF1B),
+	version(1.0),
+	helpstring("ARFileStore 1.0 Type Library")
+]
+library ARSTORELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+/*	[
+		uuid(564BF6A1-3A19-425D-A0D3-8C40D3B0A86A),
+		helpstring("TestObject3 Class")
+	]
+	coclass TestObject3
+	{
+		[default] interface ITestObject3;
+	};
+	[
+		uuid(0CDB7FFD-A6EE-4E95-BE71-6AD7D4D7509D),
+		helpstring("TestObject4 Class")
+	]
+	coclass TestObject4
+	{
+		[default] interface ITestObject4;
+	};*/
+	[
+		uuid(75CC38D9-4877-41D3-B2D5-E7189446D593),
+		helpstring("ARFileStream Class")
+	]
+	coclass ARFileStream
+	{
+		[default] interface IARStream;
+	};
+	[
+		uuid(06BB7B0F-5B83-41DD-A6F9-13D787B79FA1),
+		helpstring("ARFileDataStore Class")
+	]
+	coclass ARFileDataStore
+	{
+		[default] interface IARDataStore;
+	};
+	[
+		uuid(6A96EB6A-101A-4CE3-AA93-946D53AE76DC),
+		helpstring("ARFileWriteStream Class")
+	]
+	coclass ARFileWriteStream
+	{
+		[default] interface IARWriteStream;
+	};
+};

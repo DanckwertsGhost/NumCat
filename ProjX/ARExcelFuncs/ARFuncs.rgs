@@ -1,0 +1,26 @@
+HKCR
+{
+	ARExcelFuncs.ARFuncs.1 = s 'ARFuncs Class'
+	{
+		CLSID = s '{A0FC5F62-9BB3-4430-87FF-20DBC812BB29}'
+	}
+	ARExcelFuncs.ARFuncs = s 'ARFuncs Class'
+	{
+		CLSID = s '{A0FC5F62-9BB3-4430-87FF-20DBC812BB29}'
+		CurVer = s 'ARExcelFuncs.ARFuncs.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {A0FC5F62-9BB3-4430-87FF-20DBC812BB29} = s 'ARFuncs Class'
+		{
+			ProgID = s 'ARExcelFuncs.ARFuncs.1'
+			VersionIndependentProgID = s 'ARExcelFuncs.ARFuncs'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{DC44711E-B32A-4FA5-AEB3-9CF29987E8ED}'
+		}
+	}
+}

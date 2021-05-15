@@ -1,0 +1,26 @@
+HKCR
+{
+	NumCat.NumCatLocalValues.1 = s 'NumCatLocalValues Class'
+	{
+		CLSID = s '{D5FA61C7-C34B-45BA-9381-B7A17C20F5A9}'
+	}
+	NumCat.NumCatLocalValues = s 'NumCatLocalValues Class'
+	{
+		CLSID = s '{D5FA61C7-C34B-45BA-9381-B7A17C20F5A9}'
+		CurVer = s 'NumCat.NumCatLocalValues.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {D5FA61C7-C34B-45BA-9381-B7A17C20F5A9} = s 'NumCatLocalValues Class'
+		{
+			ProgID = s 'NumCat.NumCatLocalValues.1'
+			VersionIndependentProgID = s 'NumCat.NumCatLocalValues'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{F236F3A6-7390-4601-AF3D-1E77D079E969}'
+		}
+	}
+}

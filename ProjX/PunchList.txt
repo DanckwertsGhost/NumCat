@@ -1,0 +1,7 @@
+Punch list 5 Aug 07
+
+CSimulation::CheckModel is misnamed as it changes the simulations state eg calling makeEquations.
+Need to check a potential problem with constrained variables in solver. What about the half steps etc ?
+Is this the right way to handle constrained variables ?
+
+Perhaps should have them in at the equation level - looks a bit bolt on to me.

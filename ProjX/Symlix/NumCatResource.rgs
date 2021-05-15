@@ -1,0 +1,25 @@
+HKCR
+{
+	Symlix.NumCatResource.1 = s 'NumCatResource Class'
+	{
+		CLSID = s '{CDD16F1B-5BA2-444A-90FA-4F2ABFD68DC4}'
+	}
+	Symlix.NumCatResource = s 'NumCatResource Class'
+	{
+		CLSID = s '{CDD16F1B-5BA2-444A-90FA-4F2ABFD68DC4}'
+		CurVer = s 'Symlix.NumCatResource.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {CDD16F1B-5BA2-444A-90FA-4F2ABFD68DC4} = s 'NumCatResource Class'
+		{
+			ProgID = s 'Symlix.NumCatResource.1'
+			VersionIndependentProgID = s 'Symlix.NumCatResource'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+			}
+			'TypeLib' = s '{F236F3A6-7390-4601-AF3D-1E77D079E969}'
+		}
+	}
+}

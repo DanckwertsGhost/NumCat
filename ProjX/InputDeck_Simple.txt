@@ -1,0 +1,32 @@
+// very simplified debug case
+
+start X0=0
+stop t>1
+solver RK4VS step 0.01 tolerance 1E-5
+//solver RK4 step 0.1
+
+N1 = 0.000934125
+N2 = 9.35466E-005
+start N3 = 3.65039E-006
+
+dX0 = 1-N1-N2-N3
+
+dX0/dt=1-N1-N2-N3
+
+N3=X0 @ t=0.11
+N4=115 @ t=0.9
+
+New events here
+sync 0.1 start 0.1 // seems to get stuck at 0.1 - find out why
+pace 0.7345 // means only time steps up to
+
+
+Bug below which doesn't execute - need to check.
+// N4=55 @ t=0.96745
+
+
+record t,X0,dX0,N1,N2,N3,N4 as "c:\temp\testneg.csv" for t every 0.1
+record t,X0,dX0,N1,N2,N3,N4 as "c:\temp\testneg2.csv" for t every 0.073
+
+// Note problem with timing and firing events
+

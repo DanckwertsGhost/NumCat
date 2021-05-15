@@ -1,0 +1,26 @@
+HKCR
+{
+	SymlixStore.SymlixStream.1 = s 'SymlixStream Class'
+	{
+		CLSID = s '{75CC38D9-4877-41D3-B2D5-E7189446D593}'
+	}
+	SymlixStore.SymlixStream = s 'SymlixStream Class'
+	{
+		CLSID = s '{75CC38D9-4877-41D3-B2D5-E7189446D593}'
+		CurVer = s 'SymlixStore.SymlixStream.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {75CC38D9-4877-41D3-B2D5-E7189446D593} = s 'SymlixStream Class'
+		{
+			ProgID = s 'SymlixStore.SymlixStream.1'
+			VersionIndependentProgID = s 'SymlixStore.SymlixStream'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{CF2EF9CB-1D56-4260-8C06-5A5EBC72EF1B}'
+		}
+	}
+}

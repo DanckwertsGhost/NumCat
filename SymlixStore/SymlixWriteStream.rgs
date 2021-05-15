@@ -1,0 +1,26 @@
+HKCR
+{
+	SymlixStore.SymlixWriteStream.1 = s 'SymlixWriteStream Class'
+	{
+		CLSID = s '{6A96EB6A-101A-4CE3-AA93-946D53AE76DC}'
+	}
+	SymlixStore.SymlixWriteStream = s 'SymlixWriteStream Class'
+	{
+		CLSID = s '{6A96EB6A-101A-4CE3-AA93-946D53AE76DC}'
+		CurVer = s 'SymlixStore.SymlixWriteStream.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {6A96EB6A-101A-4CE3-AA93-946D53AE76DC} = s 'SymlixWriteStream Class'
+		{
+			ProgID = s 'SymlixStore.SymlixWriteStream.1'
+			VersionIndependentProgID = s 'SymlixStore.SymlixWriteStream'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{CF2EF9CB-1D56-4260-8C06-5A5EBC72EF1B}'
+		}
+	}
+}

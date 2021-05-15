@@ -1,0 +1,26 @@
+HKCR
+{
+	Symlix.ARDataPost.1 = s 'ARDataPost Class'
+	{
+		CLSID = s '{F37F34AA-4762-4F9E-AD00-F97D7932B30B}'
+	}
+	Symlix.ARDataPost = s 'ARDataPost Class'
+	{
+		CLSID = s '{F37F34AA-4762-4F9E-AD00-F97D7932B30B}'
+		CurVer = s 'Symlix.ARDataPost.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F37F34AA-4762-4F9E-AD00-F97D7932B30B} = s 'ARDataPost Class'
+		{
+			ProgID = s 'Symlix.ARDataPost.1'
+			VersionIndependentProgID = s 'Symlix.ARDataPost'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{F236F3A6-7390-4601-AF3D-1E77D079E969}'
+		}
+	}
+}

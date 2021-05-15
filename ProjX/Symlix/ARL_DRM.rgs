@@ -1,0 +1,26 @@
+HKCR
+{
+	Symlix.ARL_DRM.1 = s 'ARL_DRM Class'
+	{
+		CLSID = s '{30393366-5766-4352-B5A5-6CB2C6FD59DC}'
+	}
+	Symlix.ARL_DRM = s 'ARL_DRM Class'
+	{
+		CLSID = s '{30393366-5766-4352-B5A5-6CB2C6FD59DC}'
+		CurVer = s 'Symlix.ARL_DRM.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {30393366-5766-4352-B5A5-6CB2C6FD59DC} = s 'ARL_DRM Class'
+		{
+			ProgID = s 'Symlix.ARL_DRM.1'
+			VersionIndependentProgID = s 'Symlix.ARL_DRM'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{F236F3A6-7390-4601-AF3D-1E77D079E969}'
+		}
+	}
+}

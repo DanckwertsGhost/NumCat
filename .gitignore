@@ -10,6 +10,8 @@
 # Precompiled Headers
 *.gch
 *.pch
+*.tlh
+*.tli
 
 # Compiled Dynamic libraries
 *.so
@@ -30,3 +32,13 @@
 *.exe
 *.out
 *.app
+
+# Old VC6
+*.ncb
+*.tlb
+
+# Other
+*.$$$
+*.pdf
+*.zip
+*.#.*

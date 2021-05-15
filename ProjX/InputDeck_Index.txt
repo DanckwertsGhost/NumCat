@@ -1,0 +1,141 @@
+// Example  MUBATCH from ISIM
+//  MULTICOMPONENT BATCH DISTILLATION
+//  ASSUMPTIONS ARE THE SAME AS IN BSTILL, EXCEPT THAT THE
+// PLATE DYNAMICS ARE NOW EXCLUDED FROM THE ANALYSIS
+
+#define Nplates 8
+#define One -1
+
+dim X# as {min=0,max=1}
+
+//Array XA[1:NPlates]
+
+start MB=100    //Molar holdup in still
+ M0=100      //Molar holdup in reflux drum
+Z = sin(MB)
+ V=10       //Vapor boil up rate
+ R=10       //Reflux rate
+ AA=2.0     //Relative volatilities
+ AB=1.5
+ AC=1.0
+ AD=0.5
+ stop t>1000
+ //CINT=2
+ solver RK4VS step 2.5E-3
+ //NOCI=10
+ //realtime 4
+
+start XA[8]=0.25 // Initial Still Concentrations
+start XB[8]=0.25
+start XC[8]=0.25
+//start XD8=0.25
+//start XD0=1
+//start XD1=1
+//start XD2=1
+//start XD3=1
+//start XD4=1
+//start XD5=1
+//start XD6=1
+//start XD7=1
+//  ALL OTHER CONCENTRATIONS ARE IMPLICITLY 
+//  SET TO ZERO, USING THE ISIM DEFAULT VALUES
+start XA[0]=0
+start XB[0]=0
+start XC[0]=0
+
+//start XA1=0
+//start XB1=0
+//start XC1=0
+
+//start XA2=0
+//start XB2=0
+//start XC2=0
+
+//start XA3=0
+//start XB3=0
+//start XC3=0
+
+//start XA4=0
+//start XB4=0
+//start XC4=0
+
+//start XA5=0
+//start XB5=0
+//start XC5=0
+
+//start XA6=0
+//start XB6=0
+//start XC6=0
+
+//start XA7=0
+//start XB7=0
+//start XC7=0
+
+DYNAMIC
+//  LIQUID AND VAPOUR FLOWRATES
+D=V/(R+1)
+L=V-D
+
+// New order of equations
+R1=(R+1)
+
+XD[Nplates]=1-XA[8]-XB[8]-XC[8]
+
+SUMA[ 8]=AA*XA[8]+AB*XB[8]+AC*XC[8]+AD*XD[8]
+YA[8]=AA*XA[8]/SUMA[8]
+YB[8]=AB*XB[8]/SUMA[8]
+YC[8]=AC*XC[8]/SUMA[8]
+YD[8]=1-YA[8]-YA[8]-YA[8]
+
+//#index n=6+4-3:1+4-4 step-1 // Nplates
+#index n=Nplates-1:1+4-4 step-1
+
+#expand n here
+
+XA[n+1+One]=(R1*YA[n+1]-XA[0])/R
+XB[n]=(R1*YB[n+1]-XB[0])/R
+XC[n]=(R1*YC[n+1]-XC[0])/R
+XD[n]=1-XA[n]-XB[n]-XC[n]
+SUMA[n]=AA*XA[n]+AB*XB[n]+AC*XC[n]+AD*XD[n]
+
+//  VAPOUR COMPOSITIONS ON PLATES 1 TO 7
+
+YA[n]=AA*XA[n]/SUMA[n]
+YB[n]=AB*XB[n]/SUMA[n]
+YC[n]=AC*XC[n]/SUMA[n]
+YD[n]=1-YA[n]-YB[n]-YC[n]
+
+
+//  REFLUX DRUM DYNAMICS
+dXA[0]/dt=(V*YA[1]-(L+D)*XA[0])/M0
+dXB[0]/dt=(V*YB[1]-(L+D)*XB[0])/M0
+dXC[0]/dt=(V*YC[1]-(L+D)*XC[0])/M0
+XD[0]=1-XA[0]-XB[0]-XC[0]
+
+//  LIQUID COMPOSITIONS ON PLATES 1 TO 7
+//  Liquid Plate Dynamics neglected
+
+
+//   STILL DYNAMICS
+dMB/dt=L-V
+dXA[8]/dt=(L*XA[Nplates-1]-V*YA[8])/MB
+dXB[8]/dt=(L*XB[7]-V*YB[8])/MB
+dXC[8]/dt=(L*XC[7]-V*YC[8])/MB
+
+//TOTAL DISTILLATE
+dDIST/dt=D
+
+
+//PLOT T,XA0,0,TFIN,0,1
+record t,XA[0],XB[0],XC[0],XD[0],XA[8],XB[8],XC[8],XD[8] as "c:\temp\testout_index.csv" for t every 1
+dump t,XA[0],XB[0],XC[0],XD[0],XA[8],XB[8],XC[8],XD[8] as "c:\temp\dump_index.csv" for last 10 steps
+dump equations as "c:\temp\equationsdump.txt"
+//record t,XA[0],XA[1],XA[2],XA[3],XA[4],XA[5],XA[6],XA[7],XA[8] as "c:\temp\testoutputmustill_up_index.csv" for t every 1
+//record t,DIST,MB,L,V as "c:\temp\testoutputmustill_DIST_index.csv" for t every 1
+//DDEserver t,DIST,MB,L,V,XA0,XB0,XC0,XD0,XA8,XB8,XC8,XD8 as "MyServer1" every 1 sec
+
+//record t,XD0,TrachXDO,XA0,XB0,XC0,TrachE1,TrachE2,TrachE3,dN0 as "c:\temp\testoutputmustill_XD0.csv" for t every 1
+
+//PREPARE T,YA1,YB1,YC1,YD1,YA8,YB8,YC8,YD8
+//PREPARE T,XA2,XA4,XA6,R,DIST
+//OUTPUT T,XA0,XB0,XC0,XD0,XA8,XB8,XC8,XD8

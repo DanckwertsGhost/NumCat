@@ -1,0 +1,31 @@
+s=10
+r=28
+b=2.400001
+
+dx1/dt = s*(-x1+x2)
+// Basic input deck that is expected to pass
+
+// equations
+dx2/dt = r*x1-x2-x1*x3
+dx3/dt = -b*x3+x1*x2
+dx4/dt = r*s // delibrate unnecessary
+
+x1=-16.764099 @ t=0
+x2=-21.469 @ t=0
+x3=5 @ t=0
+
+//runs for 30 secs
+
+commands for simulation run(s)
+
+solver rk4
+start t=0
+stop t>90 // default should be t>100, not going to allow = here .... at the moment
+stop x1>15
+// *** BUG - every 0.1 t should be for t every 0.1 
+record t,x1,x2,x3,x4 as "c:\temp\testoutput.csv" every 0.1 t // think this should be every 0.1 variable
+
+// with a few simple commands it would be possible to run for multiple items
+
+
+

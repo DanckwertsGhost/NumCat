@@ -1,0 +1,26 @@
+HKCR
+{
+	Symlix.SymlixError.1 = s 'SymlixError Class'
+	{
+		CLSID = s '{4A5890DE-4E2C-4B2E-A0EE-9C379056661D}'
+	}
+	Symlix.SymlixError = s 'SymlixError Class'
+	{
+		CLSID = s '{4A5890DE-4E2C-4B2E-A0EE-9C379056661D}'
+		CurVer = s 'Symlix.SymlixError.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {4A5890DE-4E2C-4B2E-A0EE-9C379056661D} = s 'SymlixError Class'
+		{
+			ProgID = s 'Symlix.SymlixError.1'
+			VersionIndependentProgID = s 'Symlix.SymlixError'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{F236F3A6-7390-4601-AF3D-1E77D079E969}'
+		}
+	}
+}

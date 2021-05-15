@@ -1,0 +1,343 @@
+// Symlix.idl : IDL source for Symlix.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Symlix.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "..\..\SymlixStore\SymlixStore.idl";
+import "..\..\TraceRecorder\TraceRecorder.idl"; // to allow it to be defined in VBA also
+
+typedef enum {blank=2, modelLoaded, modelError, runInProgress, runCompleted} enumNumCatStatus; 
+typedef enum {errInput=2,errInternal, errSystem, errSyntax, errModel, errWarning, errDevWarning } enumNumCatErrorCode; 
+typedef enum {varIndependant=2,varDependant, varDerivative} enumNumCatTypes; 
+typedef enum {esddeStart=2, esddeStop} enumNumCatDDE; 
+typedef enum {eLicTrial=2, eLicTimeLimited, eLicAuthUnlimited, eLicFail } enumLicenseState; 
+typedef enum {esecNothing=2,esecRun,esecRunAndReturn,esecSyntaxAndReturn} enumNumCatEditorCommand;
+typedef enum {eventStart, eventStopGreaterEqual, eventStopLessEqual } enumNumCatEvent;
+typedef enum { 
+            Help_DISPLAY_TOPIC=0x0000,
+            Help_HELP_FINDER=0x0000,  // WinHelp equivalent
+            Help_DISPLAY_TOC=0x0001,  
+            Help_DISPLAY_INDEX=0x0002,  
+            Help_DISPLAY_SEARCH=0x0003,  
+            Help_SET_WIN_TYPE=0x0004,
+            Help_GET_WIN_TYPE=0x0005,
+            Help_GET_WIN_HANDLE=0x0006,
+            Help_ENUM_INFO_TYPE=0x0007,  // Get Info type name, call repeatedly to enumerate, -1 at end
+            Help_SET_INFO_TYPE=0x0008,  // Add Info type to filter.
+            Help_SYNC=0x0009,
+            Help_RESERVED1=0x000A,
+            Help_RESERVED2=0x000B,
+            Help_RESERVED3=0x000C,
+            Help_KEYWORD_LOOKUP=0x000D,
+            Help_DISPLAY_TEXT_POPUP=0x000E,  // display string resource id or text in a popup window
+            Help_HELP_CONTEXT=0x000F,  // display mapped numeric value in dwData
+            Help_TP_HELP_CONTEXTMENU=0x0010,  // text popup help, same as WinHelp HELP_CONTEXTMENU
+            Help_TP_HELP_WM_HELP=0x0011,  // text popup help, same as WinHelp HELP_WM_HELP
+            Help_CLOSE_ALL=0x0012,  // close all windows opened directly or indirectly by the caller
+            Help_ALINK_LOOKUP=0x0013,  // ALink version of Help_KEYWORD_LOOKUP
+            Help_GET_LAST_ERROR=0x0014,  // not currently implemented // See HHERROR.h
+            Help_ENUM_CATEGORY=0x0015,	// Get category name, call repeatedly to enumerate, -1 at end
+            Help_ENUM_CATEGORY_IT=0x0016,  // Get category info type members, call repeatedly to enumerate, -1 at end
+            Help_RESET_IT_FILTER=0x0017,  // Clear the info type filter of all info types.
+            Help_SET_INCLUSIVE_FILTER=0x0018,  // set inclusive filtering method for untyped topics to be included in display
+            Help_SET_EXCLUSIVE_FILTER=0x0019,  // set exclusive filtering method for untyped topics to be excluded from display
+            Help_INITIALIZE=0x001C,  // Initializes the help system.
+            Help_UNINITIALIZE=0x001D,  // Uninitializes the help system.
+            Help_PRETRANSLATEMESSAGE=0x00fd,  // Pumps messages. (NULL, NULL, MSG*). 
+            Help_SET_GLOBAL_PROPERTY=0x00fc  // Set a global property. (NULL, NULL, Help_GPROP)
+			} enumNumCatHelp;
+
+
+	[
+		object,
+		uuid(E8872FE4-948A-4a6b-94BD-5CCC1990D469),
+		dual,
+		helpstring("INumCatHostCallBack Interface"),
+		pointer_default(unique)
+	]
+	interface INumCatHostCallBack : IDispatch
+	{
+		[id(1), helpstring("method TimeSignal")] HRESULT TimeSignal([out,retval] long* piTime);
+		[id(2), helpstring("method Update")] HRESULT Update([in] SAFEARRAY(double) *ppsaVals, [out,retval] VARIANT_BOOL *pvb);
+		[id(3), helpstring("methof ToUpdate")] HRESULT ToUpdate([in] SAFEARRAY(long) *ppsaInds, [out,retval] VARIANT_BOOL *pvb);
+		[id(4), helpstring("method ExpectEnd - not used yet")] HRESULT ExpectEnd([out,retval] double* pdEnd); // not used yet
+	};
+
+	[
+		object,
+		uuid(48FB2B27-E7C7-40D3-B3C7-4EA80F351810),
+		dual,
+		helpstring("INumCatError Interface"),
+		pointer_default(unique)
+	]
+	interface INumCatError : IDispatch
+	{
+		[propget, id(1), helpstring("property Description")] HRESULT Description([out, retval] BSTR *pVal);
+		[propget, id(2), helpstring("property StreamName")] HRESULT StreamName([out, retval] BSTR *pVal);
+		[propget, id(3), helpstring("property Line")] HRESULT Line([out, retval] long *pVal);
+		[propget, id(4), helpstring("property ErrCode")] HRESULT ErrCode([out, retval] enumNumCatErrorCode *pVal);
+		[propget, id(5), helpstring("property DevSupportDescription"), hidden] HRESULT DevSupportDescription([out, retval] BSTR *pVal);
+		[propget, id(6), helpstring("property XPosition")] HRESULT XPosition([out, retval] long *pVal);
+		[propget, id(7), helpstring("property HelpRef")] HRESULT HelpRef([out, retval] long *pVal);
+	};
+	[
+		object,
+		uuid(6B56A92A-A885-4083-ABAF-4E8DF2F9022B),
+		dual,
+		helpstring("INumCatErrorRun Interface"),
+		pointer_default(unique)
+	]
+	interface INumCatErrorRun : IDispatch
+	{
+		[id(1), helpstring("method GetAllErrors")] HRESULT GetAllErrors([out,retval] SAFEARRAY(INumCatError) *ppErrors);
+		[propget, id(2), helpstring("property CountErrors")] HRESULT CountErrors([out, retval] long *pVal);
+	};
+
+
+	[
+		object,
+		uuid(2F146DBD-50AF-4A26-99D7-2C44658355E0),
+		dual,
+		helpstring("INumCat Interface"),
+		pointer_default(unique)
+	]
+	interface INumCat : IDispatch
+	{
+//		[id(1), helpstring("method CheckFile")] HRESULT CheckFile([in] BSTR* sFileName, [out,retval] VARIANT_BOOL*  pvbResult);
+		[id(1), helpstring("method LoadModel")] HRESULT LoadModel([in] BSTR* sFileName,[in] IARDataStore* pIStore, [out,retval] VARIANT_BOOL* pvbResult);
+		[id(2), helpstring("method RunModel")] HRESULT RunModel([in] long hInstance, [defaultvalue(NULL)] INumCatHostCallBack* pINumCatHostCallBack, [out,retval] VARIANT_BOOL* pvbResult);
+		[propget, id(3), helpstring("property ModelStatus")] HRESULT ModelStatus([out, retval] enumNumCatStatus *pVal);
+		[id(4), helpstring("method ClearModel")] HRESULT ClearModel([in] VARIANT_BOOL bEvenIfRunning, [out,retval] VARIANT_BOOL* pvbResult);
+		[id(5), helpstring("method ResetModel")] HRESULT ResetModel([in] VARIANT_BOOL bEvenIfRunning, [out,retval]  VARIANT_BOOL* pvbResult);
+		[propget, id(6), helpstring("method VariableNames")] HRESULT VariableNames([out,retval] SAFEARRAY(BSTR) *ppsaVars);
+		[propget, id(7), helpstring("method CurrentModelValues")] HRESULT CurrentModelValues([out,retval] SAFEARRAY(double) *ppsaVals);
+		[id(8), helpstring("method GiveVariableIndex")] HRESULT GiveVariableIndex([in] BSTR* sVariable, [out,retval] long* piIndex);
+//		[id(9), helpstring("method SetHostCallBack")] HRESULT SetHostCallBack(INumCatHostCallBack* pICallBack);
+		[id(9), helpstring("method StopModel")] HRESULT StopModel();
+		[id(10), helpstring("method GiveErrors")] HRESULT GiveErrors([out,retval] INumCatErrorRun** pINumCatErrorRun);
+		[propget, id(11), helpstring("property LicenseState")] HRESULT LicenseState([out, retval] enumLicenseState *pVal);
+		[id(12), helpstring("method AddUserEvents")] HRESULT AddUserEvents([in] SAFEARRAY(BSTR) *ppsaVars, [in] SAFEARRAY(double) *ppsaVals, [in] SAFEARRAY(enumNumCatEvent) *ppsaEvTypes, [out,retval] VARIANT_BOOL* pvbResult);
+		[propget, id(13), helpstring("property RunTag")] HRESULT RunTag([out, retval] BSTR *pVal);
+		[propput, id(13), helpstring("property RunTag")] HRESULT RunTag([in] BSTR newVal);
+		[propget, id(14), helpstring("property Version")] HRESULT Version([out, retval] float *pVal);
+		[propget, id(15), helpstring("property VersionDescription")] HRESULT VersionDescription([out, retval] BSTR *pVal);
+//		[id(17), helpstring("method TempMeth")] HRESULT TempMeth([defaultvalue(NULL)] INumCatHostCallBack* pINumCatHostCallBack, [out,retval] VARIANT_BOOL* pvb);
+	};
+
+[
+	uuid(F236F3A6-7390-4601-AF3D-1E77D079E969),
+	version(1.0),
+	helpstring("Numerical Catalyst 1.0 Type Library")
+]
+library NumCatLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+//	[
+//		uuid(9E1B5230-DDB0-43B1-90AF-E854A5EF8892),
+//		helpstring("_INumCatEvents Interface")
+//	]
+//	dispinterface _INumCatEvents
+//	{
+//		properties:
+//		methods:
+//		[id(1), helpstring("method ReportError")] void ReportError([in] long iLine, [in] long iPos, [in] BSTR* sFile, [in] BSTR* sMessage, [in] enumNumCatErrorCode ErrorType);
+//		[id(2), helpstring("method DDEStatus")] HRESULT DDEStatus([in] enumNumCatDDE esddeStatus);
+//	};
+	[
+		object,
+		uuid(B80CE381-488E-467A-B537-AC6C9E6A1B3C),
+		dual,
+		helpstring("INumCatEditor Interface"),
+		pointer_default(unique)
+	]
+	interface INumCatEditor : IDispatch
+	{
+		[id(1), helpstring("method OpenToEdit")] HRESULT OpenToEdit([in] int ihwnd, [in] BSTR* pbstrKey, [in] IARDataStore* pIStore, [in] INumCatErrorRun* pIErrorRun, [in] IARTrace* pIARTrace, [out,retval] enumNumCatEditorCommand* pVal);
+	};
+	[
+		object,
+		uuid(293CA626-F7A4-46AA-B5D1-4C13C4AE6A28),
+		dual,
+		helpstring("IARDataPost Interface"),
+		pointer_default(unique)
+	]
+	interface IARDataPost : IDispatch
+	{
+		[id(1), helpstring("method AddItem")] HRESULT AddItem([in] BSTR* pbstrFirstKey, [in] BSTR* pbstrSecondKey, [in] double vValue, [out,retval] VARIANT_BOOL* pvbResult);
+		[id(2), helpstring("method RetrieveItem")] HRESULT RetrieveItem([in] BSTR* pbstrFirstKey, [in] BSTR* pbstrSecondKey, [out,retval] double* pvValue);
+		[id(3), helpstring("method FindItem")] HRESULT FindItem([in] BSTR* pbstrFirstKey, [in] BSTR* pbstrSecondKey, [out,retval] VARIANT_BOOL* pvbResult);
+		[id(4), helpstring("method AddTextItem")] HRESULT AddTextItem([in] BSTR* pbstrFirstKey, [in] BSTR* pbstrSecondKey, [in] BSTR* pbstrItem, [out,retval] VARIANT_BOOL* pvbResult);
+		[id(5), helpstring("method RetrieveTextItem")] HRESULT RetrieveTextItem([in] BSTR* pbstrFirstKey, [in] BSTR* pbstrSecondKey, [out,retval] BSTR* pbstrValue);
+		[id(6), helpstring("method FindTextItem")] HRESULT FindTextItem([in] BSTR* pbstrFirstKey, [in] BSTR* pbstrSecondKey, [out,retval] VARIANT_BOOL* pvbResult);
+	};
+	[
+		object,
+		uuid(54F985BE-62D5-4E33-A96C-66807855A48B),
+		dual,
+		helpstring("IARRunProgress Interface"),
+		pointer_default(unique)
+	]
+	interface IARRunProgress : IDispatch
+	{
+		[id(1), helpstring("method RunModel")] HRESULT RunModel([in] int ihwnd, [in] INumCat* pINumCat, [in] IARDataStore* pIStore, [in] BSTR* pbstrRunName, [in] VARIANT_BOOL bShow, [out,retval] VARIANT_BOOL* pbSuccess );
+	};
+	[
+		object,
+		uuid(49BFFF76-4D2C-4FE8-A18E-0749C9AAAF08),
+		dual,
+		helpstring("INumCatResource Interface"),
+		pointer_default(unique)
+	]
+	interface INumCatResource : IDispatch
+	{
+		[propget, id(1), helpstring("property Picture"), hidden] HRESULT Picture([in] short iPict, [out, retval] IPictureDisp** pVal);
+		[propget, id(2), helpstring("property Mask"), hidden] HRESULT Mask([in] short iMask, [out, retval] IPictureDisp** pVal);
+		[propget, id(3), helpstring("property String"), hidden] HRESULT String([in] short iString, [out, retval] BSTR *pVal);
+		[propget, id(4), helpstring("property Version")] HRESULT Version([out, retval] float *pVal);
+		[propget, id(5), helpstring("property VersionDescription")] HRESULT VersionDescription([out, retval] BSTR *pVal);
+		[id(6), helpstring("method CallHTMLHelp")] HRESULT CallHTMLHelp([in] long hWnd, [in] enumNumCatHelp eHelp, [in] long iRef, [out,retval] VARIANT_BOOL* pVal);
+	};
+	[
+		object,
+		uuid(B4B5D683-B400-4540-A7E2-26C7D3544007),
+		dual,
+		helpstring("INumCatExcelLocalRes Interface"),
+		pointer_default(unique)
+	]
+	interface INumCatExcelLocalRes : IDispatch
+	{
+		[id(1), helpstring("method SetPropertyItem")] HRESULT SetPropertyItem([in] BSTR* sKey,[in] BSTR* sItem,[out,retval] VARIANT_BOOL* pvb);
+		[propget, id(2), helpstring("property SheetOrder")] HRESULT SheetOrder([out, retval] SAFEARRAY(BSTR) *ppVal);
+//		[propputref, id(2), helpstring("property SheetOrder")] HRESULT SheetOrder([in] SAFEARRAY(BSTR) pVal);
+		[id(3), helpstring("method SetSheetOrder")] HRESULT SetSheetOrder([in] SAFEARRAY(BSTR)* sSheetArray, [out,retval] VARIANT_BOOL* pvb);
+		[id(4), helpstring("method GetPropertyItem")] HRESULT GetPropertyItem([in] BSTR* sKey, [out,retval] BSTR* pbstrItem);
+		[id(5), helpstring("method ReadProperties")] HRESULT ReadProperties([in] IDispatch* Application, [out,retval] VARIANT_BOOL* pvb);
+		[id(6), helpstring("method SaveProperties")] HRESULT SaveProperties([in] IDispatch* Application, [ out,retval] VARIANT_BOOL* pvb);
+		[propget, id(7), helpstring("property TagCharts")] HRESULT TagCharts([out, retval] BSTR *pVal);
+		[propget, id(8), helpstring("property TagModels")] HRESULT TagModels([out, retval] BSTR *pVal);
+		[propget, id(9), helpstring("property TagSheets")] HRESULT TagSheets([out, retval] BSTR *pVal);
+		[propget, id(10), helpstring("property TagResults")] HRESULT TagResults([out, retval] BSTR *pVal);
+		[propget, id(11), helpstring("property Version")] HRESULT Version([out, retval] float *pVal);
+		[propget, id(12), helpstring("property VersionDescription")] HRESULT VersionDescription([out, retval] BSTR *pVal);
+		[id(13), helpstring("method AddResultName")] HRESULT AddResultName([in] BSTR* sResult, [out,retval] long* piCount);
+		[id(14), helpstring("method IsAResultName")] HRESULT IsAResultName([in] BSTR* sResultName, [out,retval] VARIANT_BOOL* pVal);
+		[propget, id(15), helpstring("property LocalSheetName")] HRESULT LocalSheetName([out, retval] BSTR *pVal);
+		[id(16), helpstring("method GetPropertyNumber")] HRESULT GetPropertyNumber([in] BSTR* pbstr, [out,retval] float* Value);
+		[id(17), helpstring("method SetPropertyNumber up to six sign places")] HRESULT SetPropertyNumber([in] BSTR* pbstrKey, [in] float* pValue, [out,retval] VARIANT_BOOL* pvb);
+	};
+	[
+		object,
+		uuid(2013EA3D-5AC4-4BBE-A3C9-528E89247BE2),
+		dual,
+		helpstring("IARL_DRM Interface"),
+		pointer_default(unique)
+	]
+	interface IARL_DRM : IDispatch
+	{
+		[propget, id(1), helpstring("property Version")] HRESULT Version([out, retval] float *pVal);
+		[propget, id(2), helpstring("property Expired")] HRESULT Expired([out, retval] VARIANT_BOOL *pVal);
+		[propget, id(3), helpstring("property User")] HRESULT User([out, retval] BSTR *pVal);
+		[propget, id(4), helpstring("property Key")] HRESULT Key([out, retval] BSTR *pVal);
+		[propget, id(5), helpstring("property MachineFingerPrint")] HRESULT MachineFingerPrint([out, retval] BSTR *pVal);
+		[propget, id(6), helpstring("property MachineEnhancedFingerPrint")] HRESULT MachineEnhancedFingerPrint([out, retval] BSTR *pVal);
+		[id(7), helpstring("method Register")] HRESULT Register([in] BSTR* sUser, [in] BSTR* sKey, [out,retval] VARIANT_BOOL* pvbResult);
+		[id(8), helpstring("method GetValue"), hidden] HRESULT GetValue([in] BSTR* sIndex, [out,retval] BSTR* sValue);
+		[id(9), helpstring("method OpenUserRegisterDialog")] HRESULT OpenUserRegisterDialog([optional,in,defaultvalue(NULL)] int parent_hwnd,[out,retval] VARIANT_BOOL* pvb);
+		[id(10), helpstring("method OpenBuyNowURL")] HRESULT OpenBuyNowURL([optional,in,defaultvalue(NULL)] int parent_hwnd,[out, retval] VARIANT_BOOL* pvb);
+		[propget, id(11), helpstring("property DaysLeft")] HRESULT DaysLeft([out, retval] long *pVal);
+		[propget, id(12), helpstring("property CountUses")] HRESULT CountUses([out, retval] long *pVal);
+		[propget, id(13), helpstring("property Verified")] HRESULT Verified([out, retval] VARIANT_BOOL *pVal);
+//		[id(9), helpstring("method OpenUserRegisterDialog")] HRESULT OpenUserRegisterDialog([in] int parent_hwnd,[out,retval] VARIANT_BOOL* pvb);
+//		[id(10), helpstring("method OpenBuyNowURL")] HRESULT OpenBuyNowURL([in] int parent_hwnd,[out, retval] VARIANT_BOOL* pvb);
+	};
+
+	[
+		uuid(8F086AA2-30F8-4480-A04A-9623134E4EB2),
+		helpstring("Symlix Class")
+	]
+	coclass NumCat
+	{
+		[default] interface INumCat;
+//		[default, source] dispinterface _INumCatEvents;
+	};
+
+//   Leave commented out as these objects cannot be created
+//	[
+//		uuid(7A78AC5F-E4DC-46fe-A150-46C7F0721EE0),
+//		helpstring("INumCatHostCallBack Class")
+//	]
+//	coclass SymlixHostCallBack
+//	{
+//		[default] interface INumCatHostCallBack;
+//	};
+	[
+		uuid(4A5890DE-4E2C-4B2E-A0EE-9C379056661D),
+		helpstring("SymlixError Class")
+	]
+	coclass NumCatError
+	{
+		[default] interface INumCatError;
+	};
+	[
+		uuid(D73F0863-5428-4818-A201-EECC3D645E4C),
+		helpstring("SymlixErrorRun Class")
+	]
+	coclass NumCatErrorRun
+	{
+		[default] interface INumCatErrorRun;
+	};
+	[
+		uuid(E2CF0192-2445-44EA-A0D3-69804BADB96B),
+		helpstring("SymlixEditor Class")
+	]
+	coclass NumCatEditor
+	{
+		[default] interface INumCatEditor;
+	};
+	[
+		uuid(F37F34AA-4762-4F9E-AD00-F97D7932B30B),
+		helpstring("ARDataPost Class")
+	]
+	coclass ARDataPost
+	{
+		[default] interface IARDataPost;
+	};
+	[
+		uuid(A6210167-B6D4-4C0F-8AE4-5D37F6C1B628),
+		helpstring("ARRunProgress Class")
+	]
+	coclass ARRunProgress
+	{
+		[default] interface IARRunProgress;
+	};
+	[
+		uuid(CDD16F1B-5BA2-444A-90FA-4F2ABFD68DC4),
+		helpstring("NumCatResource Class")
+	]
+	coclass NumCatResource
+	{
+		[default] interface INumCatResource;
+	};
+	[
+		uuid(8E04407D-E8B5-45E6-A935-74A54D9C77E5),
+		helpstring("NumCatExcelLocalRes Class")
+	]
+	coclass NumCatExcelLocalRes
+	{
+		[default] interface INumCatExcelLocalRes;
+	};
+
+	[
+		uuid(30393366-5766-4352-B5A5-6CB2C6FD59DC),
+		helpstring("ARL_DRM Class")
+	]
+	coclass ARL_DRM
+	{
+		[default] interface IARL_DRM;
+	};
+};

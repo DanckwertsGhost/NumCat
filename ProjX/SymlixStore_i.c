@@ -1,0 +1,62 @@
+/* this file contains the actual definitions of */
+/* the IIDs and CLSIDs */
+
+/* link this file in with the server and any clients */
+
+
+/* File created by MIDL compiler version 5.01.0164 */
+/* at Mon Nov 30 10:40:26 2009
+ */
+/* Compiler settings for C:\Inetpub\ftproot\cpp_new\SymlixStore\SymlixStore.idl:
+    Oicf (OptLev=i2), W1, Zp8, env=Win32, ms_ext, c_ext
+    error checks: allocation ref bounds_check enum stub_data 
+*/
+//@@MIDL_FILE_HEADING(  )
+#ifdef __cplusplus
+extern "C"{
+#endif 
+
+
+#ifndef __IID_DEFINED__
+#define __IID_DEFINED__
+
+typedef struct _IID
+{
+    unsigned long x;
+    unsigned short s1;
+    unsigned short s2;
+    unsigned char  c[8];
+} IID;
+
+#endif // __IID_DEFINED__
+
+#ifndef CLSID_DEFINED
+#define CLSID_DEFINED
+typedef IID CLSID;
+#endif // CLSID_DEFINED
+
+const IID IID_IARStream = {0x2CEB4397,0x105D,0x42F4,{0xB8,0x4A,0x01,0x6E,0x2E,0x51,0x55,0xAF}};
+
+
+const IID IID_IARWriteStream = {0x9AB3CC26,0x6A0A,0x4EDF,{0x9A,0xC5,0xB3,0x7F,0x5C,0xC8,0xB8,0x94}};
+
+
+const IID IID_IARDataStore = {0x511B72BC,0x0641,0x4BD9,{0xAD,0xB0,0xF0,0xEF,0xFA,0x0E,0xFD,0x26}};
+
+
+const IID LIBID_ARSTORELib = {0xCF2EF9CB,0x1D56,0x4260,{0x8C,0x06,0x5A,0x5E,0xBC,0x72,0xEF,0x1B}};
+
+
+const CLSID CLSID_ARFileStream = {0x75CC38D9,0x4877,0x41D3,{0xB2,0xD5,0xE7,0x18,0x94,0x46,0xD5,0x93}};
+
+
+const CLSID CLSID_ARFileDataStore = {0x06BB7B0F,0x5B83,0x41DD,{0xA6,0xF9,0x13,0xD7,0x87,0xB7,0x9F,0xA1}};
+
+
+const CLSID CLSID_ARFileWriteStream = {0x6A96EB6A,0x101A,0x4CE3,{0xAA,0x93,0x94,0x6D,0x53,0xAE,0x76,0xDC}};
+
+
+#ifdef __cplusplus
+}
+#endif
+

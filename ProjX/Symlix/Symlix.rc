@@ -1,0 +1,800 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""Symlix.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,7,0,0
+ PRODUCTVERSION 2,7,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "Release version\0"
+            VALUE "CompanyName", "Aston Read Limited\0"
+            VALUE "FileDescription", "Numerical Catalyst Module\0"
+            VALUE "FileVersion", "2, 7, 0, 0\0"
+            VALUE "InternalName", "NumCat\0"
+            VALUE "LegalCopyright", "Copyright © 2011 Aston Read Limited\0"
+            VALUE "LegalTrademarks", "Numerical Catalyst is a UK registered Trade Mark of Aston Read Limited\0"
+            VALUE "OLESelfRegister", "\0"
+            VALUE "OriginalFilename", "NumCat.DLL\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Numerical Catalyst Module\0"
+            VALUE "ProductVersion", "2, 7, 0, 0\0"
+            VALUE "SpecialBuild", "\0"
+        END
+        BLOCK "080904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "Aston Read Limited\0"
+            VALUE "FileDescription", "Symlix\0"
+            VALUE "FileVersion", "2, 7, 0, 0\0"
+            VALUE "InternalName", "Symlix\0"
+            VALUE "LegalCopyright", "Copyright © 2009 Aston Read Limited\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "Symlix.dll\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Aston Read Limited Symlix\0"
+            VALUE "ProductVersion", "2, 7, 0, 0\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200, 0x809, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&Stream"
+    BEGIN
+        MENUITEM "&Run\tCtrl+R",                ID_FILE_RUN
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "S&yntax"
+    BEGIN
+        POPUP "Arrays"
+        BEGIN
+            MENUITEM "Array",                       ID_POPUP1_ARRAYS_PLAINARRAY
+
+            MENUITEM "Sheet Array",                 ID_POPUP1_ARRAYS_SHEET
+            POPUP "Array functions"
+            BEGIN
+                MENUITEM "Count",                       ID_POPUP1_ARRAYS_ARRAYFUNCTIONS_COUNT
+
+                MENUITEM "Sum",                         ID_POPUP1_ARRAYS_ARRAYFUNCTIONS_SUM
+
+                MENUITEM "Avrg",                        ID_POPUP1_ARRAYS_ARRAYFUNCTIONS_AVRG
+
+            END
+        END
+        POPUP "&Events"
+        BEGIN
+            MENUITEM "&Start",                      ID_POPUP1_EVENTS_START
+            MENUITEM "S&top",                       ID_POPUP1_EVENTS_STOP
+            MENUITEM "&Record",                     ID_POPUP1_EVENTS_RECORD
+            MENUITEM "Change value @",              ID_POPUP1_EVENTS_CHANGEVALUE
+
+            MENUITEM "&Dump values",                ID_POPUP1_EVENTS_DUMP
+            MENUITEM "Dump e&quations",             ID_POPUP1_EVENTS_DUMPEQUATIONS
+
+            MENUITEM "&Iteration from-to",          ID_POPUP1_EVENTS_ITERATIONFROMTO
+
+            MENUITEM "It&eration series",           ID_POPUP1_EVENTS_ITERATIONSERIES
+
+            MENUITEM SEPARATOR
+            MENUITEM "Sync",                        ID_POPUP1_EVENTS_SYNC
+            MENUITEM "Pace",                        ID_POPUP1_EVENTS_PACE
+            MENUITEM "Real time",                   ID_POPUP1_EVENTS_REALTIME
+
+        END
+        POPUP "E&quations"
+        BEGIN
+            MENUITEM "Ordinary",                    ID_POPUP1_EQUATIONS_ORDINARY
+
+            MENUITEM "Differential",                ID_POPUP1_EQUATIONS_DIFFERENTIAL
+
+            MENUITEM "Switch case",                 ID_POPUP1_EQUATIONS_SWITCHCASE
+
+            MENUITEM "Lookup",                      ID_POPUP1_EQUATIONS_LOOKUP
+
+        END
+        POPUP "&Functions"
+        BEGIN
+            MENUITEM "Log",                         ID_POPUP1_FUNCTIONS_LOG
+            MENUITEM "Ln",                          ID_POPUP1_FUNCTIONS_LN
+            MENUITEM "Exp",                         ID_POPUP1_FUNCTIONS_EXP
+            MENUITEM "Abs",                         ID_POPUP1_FUNCTIONS_ABS
+            MENUITEM "Sin",                         ID_POPUP1_FUNCTIONS_SIN
+            MENUITEM "Cos",                         ID_POPUP1_FUNCTIONS_COS
+            MENUITEM "Tan",                         ID_POPUP1_FUNCTIONS_TAN
+            MENUITEM "ASin",                        ID_POPUP1_FUNCTIONS_ASIN
+            MENUITEM "ACos",                        ID_POPUP1_FUNCTIONS_ACOS
+            MENUITEM "ATan",                        ID_POPUP1_FUNCTIONS_ATAN
+            MENUITEM "Int",                         ID_POPUP1_FUNCTIONS_INT
+            MENUITEM "Intup",                       ID_POPUP1_FUNCTIONS_INTUP
+
+        END
+        POPUP "Indices"
+        BEGIN
+            MENUITEM "Define index",                ID_POPUP1_INDEX_DEFINE
+            MENUITEM "Expand here",                 ID_POPUP1_INDEX_EXPAND
+        END
+        POPUP "&Solvers"
+        BEGIN
+            MENUITEM "Runge Kutta 3rd Order",       ID_POPUP1_SOLVER_RK3
+            MENUITEM "Runge Kutta 3rd Order variable step", 
+                                                    ID_POPUP1_SOLVER_RK3VS
+            MENUITEM "Runge Kutta 4th Order",       ID_POPUP1_SOLVER_RK4
+            MENUITEM "Runge Kutta 4th Order variable step", 
+                                                    ID_POPUP1_SOLVER_RK4VS
+            MENUITEM "Runge Kutta 4th Order variable step multi thread", 
+                                                    ID_POPUP1_SOLVER_RK4VSMT
+            MENUITEM "Runge Kutta 5th Order",       ID_POPUP1_SOLVER_RK5
+            MENUITEM "Runge Kutta 5th Order variable step", 
+                                                    ID_POPUP1_SOLVER_RK5VS
+            MENUITEM SEPARATOR
+            MENUITEM "Sequence from-to",            ID_POPUP1_SOLVER_SEQFROMTO
+
+            MENUITEM "Sequence series",             ID_POPUP1_SOLVER_SEQUENCESERIES
+
+            MENUITEM "Once",                        ID_POPUP1_SOLVERS_ONCE
+        END
+        POPUP "&Macros"
+        BEGIN
+            MENUITEM "Insert header file",          ID_POPUP1_MACROS_INSERT
+            MENUITEM "Define limit type",           ID_POPUP1_MACROS_LIMIT
+            MENUITEM "Define variable type",        ID_POPUP1_MACROS_TYPE
+        END
+        MENUITEM SEPARATOR
+        POPUP "E&xample"
+        BEGIN
+            MENUITEM "S&imple",                     ID_EXAMPLE_SIMPLE
+        END
+    END
+    POPUP "&Help", MENUBARBREAK
+    BEGIN
+        MENUITEM "with the Editor",             ID_HELP_EDITOR
+        MENUITEM "with Syntax",                 ID_HELP_SYNTAX
+        MENUITEM SEPARATOR
+        MENUITEM "&About Editor",               ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "R",            ID_FILE_RUN,            VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_F9,          ID_FILE_RUN,            VIRTKEY, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 245, 118
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,190,98,50,14
+    CTEXT           "Numerical Catalyst v2.0\nNumerical Catalyst (R) is a UK registered trade mark\n(c) Copyright Aston Read Limited 2011",
+                    IDC_STATIC,25,57,201,32
+    CONTROL         210,IDC_STATIC,"Static",SS_BITMAP,61,14,125,39
+    GROUPBOX        "",IDC_STATIC,7,7,231,88
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\SimpleEditExample.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_FILE_RUN
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        RIGHTMARGIN, 240
+        BOTTOMMARGIN, 117
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROJNAME            "Numerical Catalyst"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "Numerical catalyst editor"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
+    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ATL_IDS_SCSIZE          "Change the window size"
+    ATL_IDS_SCMOVE          "Change the window position"
+    ATL_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    ATL_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    ATL_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    ATL_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    ATL_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ATL_IDS_SCRESTORE       "Restore the window to normal size"
+    ATL_IDS_SCTASKLIST      "Activate Task List"
+    ATL_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ATL_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ATL_IDS_MRU_FILE        "Open this document"
+    IDS_EDITOR_CANTOVRFORM  "This line has a formula and can't be edited"
+    IDS_VERSIONDESCRIPTION  "Numerical Catalyst, copyright Aston Read Limited 2009"
+    IDS_VERSIONDESCRIPTIONRES 
+                            "Supporting resources for Office addins, copyright Aston Read Limited 2009"
+    IDS_LORENZ_EXAMPLE      "// Basic example of the Lorenz attractor\n\nstart s=10\nstart r=28\nstart b=2.400001\n\n// equations\ndx1/dt = s*(-x1+x2)\ndx2/dt = r*x1-x2-x1*x3\ndx3/dt = -b*x3+x1*x2\n\nstart x1=-16.764099\nstart x2=-21.469\nstart x3=5"
+    IDS_LORENZ_EXAMPLE2     "\nstart t=0\nstop t>10\n\nrecord t,x1,x2,x3 as ""output.csv"" for t every 0.1\n\nsolver RK4VS step 2.5E-4 tolerance 1E-5"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDR_POPUP1              "Popup1"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_POPUP1_EVENTS_START  "Start <Var> = <Number> // <Var> will be inialised to <Number> at simulation start"
+    ID_POPUP1_EVENTS_STOP   "Stop <Var> > <Number> // '>' or '<' can be used"
+    ID_POPUP1_EVENTS_RECORD "record <V1>,<Vn> as ""<Str>"" for <Vx> every <Number>"
+    ID_POPUP1_EVENTS_DUMP   "dump <V1>,<V2>,<Vn> as ""<Str file anme>""   for last <Number> steps"
+    ID_POPUP1_EQUATIONS_ORDINARY "<V> = <Expression> // eg A=B+C/(23+D)"
+    ID_POPUP1_EQUATIONS_SWITCHCASE 
+                            "switch <V1> // \ncase <V1>>5\n    <V2>=10\ncase <V1>>0\n    <V2>=5\ndefault\n    <V2>=<V3>*<Expression>"
+    ID_POPUP1_EQUATIONS_LOOKUP 
+                            "lookup <V1> from <V2>,<Vn> in ""<Name>"" cache 0 // works best for just V2, lookup will slow considerably for each additional variable"
+    ID_POPUP1_FUNCTIONS_SIN "sin( <Expression> )"
+    ID_POPUP1_SOLVER_RK4    "solver RK4VS step 2.5E-3 // alter time step as required"
+    ID_POPUP1_SOLVER_RK4VS  "solver RK4VS step 2.5E-3  tolerance 1E-5 // alter time step as required - step is starting step that will be adapted. Increase tolerance to run faster at expense of accuracy"
+    ID_POPUP1_SOLVER_RK4VSMT 
+                            "solver RK4VSMT step 2.5E-3  tolerance 1E-5 // alter time step as required - step is starting step that will be adapted. Increase tolerance to run faster at expense of accuracy"
+    ID_POPUP1_SOLVER_RK5    "solver RK5 step 2.5E-3 // alter time step as required."
+    ID_POPUP1_SOLVER_RK5VS  "solver RK5VS step 2.5E-3 tolerance 1E-5 // alter time step as required - step is starting step that will be adapted. Increase tolerance to run faster at expense of accuracy"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_POPUP1_EQUATIONS_DIFFERENTIAL 
+                            "d<V1>/dt = <Expression> // note V1 must be iniitialsed"
+    ID_POPUP1_MACROS_INSERT "#include ""<Name>"""
+    ID_POPUP1_MACROS_DEFINE "#define <Str> {min=<Number>} // or max=<Number> or min=<Number>,max=<Number>"
+    ID_POPUP1_MACROS_TYPE   "dim <V1> as  {min=0,max=10} // or just min or max. a <Str> from a define could be used also"
+    ID_SAMPLES_TEMPLATES_SKELETON 
+                            "Paste a simple example\nSimple Example -Lorenz"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_HELP_EDITOR          "Help information on this editor"
+    ID_HELP_SYNTAX          "Help on Numerical Catalyst syntax"
+    ID_POPUP1_FUNCTIONS_TAN "tan( <Expression> )"
+    ID_POPUP1_FUNCTIONS_COS "cos( <Expression> )"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_POPUP1_FUNCTIONS_ASIN "asin( <Expression> )"
+    ID_POPUP1_FUNCTIONS_ACOS "acos( <Expression> )"
+    ID_POPUP1_FUNCTIONS_ATAN "atan( <Expression> )"
+    ID_POPUP1_FUNCTIONS_LOG "log( <Expression> )"
+    ID_POPUP1_FUNCTIONS_LN  "ln( <Expression> )"
+    ID_POPUP1_FUNCTIONS_ABS "abs( <Expression> )"
+    ID_POPUP1_FUNCTIONS_EXP "exp( <Expression> )"
+    ID_POPUP1_SOLVER_RK3    "solver RK3 step 2.5E-3 // alter time step as required"
+    ID_POPUP1_SOLVER_RK3VS  "solver RK3VS step 2.5E-3  tolerance 1E-5 // alter time step as required - step is starting step that will be adapted. Increase tolerance to run faster at expense of accuracy"
+    ID_POPUP1_ARRAYS_PLAINARRAY "Array <var>[1,3:6]={1,2,3,4,5}"
+    ID_POPUP1_ARRAYS_SHEET  "ArrayLookup <var>[1:4] in ""<stream>"""
+    ID_POPUP1_INDEX_DEFINE  "#index <ind>=7:1 step-1"
+    ID_POPUP1_INDEX_EXPAND  "#expand <ind> here"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_LE_LOCAL_OPTIONS    "__xxLocalOptionsxx"
+    IDS_LE_KEY_USELOCALPREFIX "UseLocalPrefix"
+    IDS_LE_KEY_LOCALPREFIX  "LocalPrefix"
+    IDS_LE_KEY_HIDELOCALMODELS "HideLocalModels"
+    IDS_LE_KEY_AUTOORGANISESHEETS "AutoOrganiseSheets"
+    IDS_LE_KEY_ORDERFORSHEETS "OrderForSheets"
+    IDS_LE_KEY_ORDEROFSHEETS "OrderOfSheets"
+    IDS_LE_KEY_LASTRUNVERSION "LastRunVersion"
+    IDS_LE_KEY_EXTRADEBUG   "ExtraDebug"
+    IDS_LE_TAG_LISTRESULTSSHEETS "ListResults"
+    IDS_ORDER_SHEETS        "Sheets"
+    IDS_ORDER_CHARTS        "Charts"
+    IDS_ORDER_MODELS        "Models"
+    IDS_ORDER_RESULTS       "Results"
+    IDS_NUMCATLOCRESDES     "Component for local sheet support. Copyright Aston Read 2009."
+    ID_POPUP1_SOLVER_SEQFROMTO "sequence <var>=1 to 15 step 2"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_POPUP1_SOLVER_SEQUENCESERIES "sequence <var>{ 3,2,0.004546}"
+    ID_POPUP1_EVENTS_ITFROMTO "iteration <var>=1 to 15 step 2"
+    ID_POPUP1_EVENTS_ITERATIONSERIES "iteration <var>{ 3,2,0.004546}"
+    ID_POPUP1_EVENTS_DUMPEQUATIONS "dump equations as ""<stream>"""
+    ID_FILE_RUN             "Run the active document\nRun"
+    ID_POPUP1_ARRAYS_ARRAYFUNCTIONS_COUNT "count( <ArrayVariable> )"
+    ID_POPUP1_ARRAYS_ARRAYFUNCTIONS_SUM "sum( <ArrayVariable> )"
+    ID_POPUP1_ARRAYS_ARRAYFUNCTIONS_AVRG 
+                            "avrg( <ArrayVariable> ) // average of all array elements"
+    ID_POPUP1_EVENTS_SYNC   "sync <time_period_secs> start <time_secs>"
+    ID_POPUP1_EVENTS_PACE   "pace <time_period_secs>"
+    ID_POPUP1_EVENTS_REALTIME 
+                            "realtime <fraction> // > 1 means will run faster than realtime, if can be solved that fast"
+    ID_POPUP1_FUNCTIONS_INT "int( <Expression> )"
+    ID_POPUP1_FUNCTIONS_INTUP "intup( <Expression> ) // interger rounded up"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_POPUP1_SOLVERS_ONCE  "once // run equations once - no time step forward"
+    ID_POPUP1_EVENTS_CHANGEVALUE 
+                            "<var> = <number> @ <var> = <number> // a once only triggered event"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.K.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    MENUITEM ",",                           65535
+END
+
+IDR_POPUP1 MENU DISCARDABLE 
+BEGIN
+    POPUP "Popup1"
+    BEGIN
+        MENUITEM "Cut",                         ID_EDIT_CUT
+        MENUITEM "Copy",                        ID_EDIT_COPY
+        MENUITEM "Paste",                       ID_EDIT_PASTE
+        MENUITEM SEPARATOR
+        POPUP "Arrays"
+        BEGIN
+            MENUITEM "Array",                       ID_POPUP1_ARRAYS_PLAINARRAY
+
+            MENUITEM "Sheet Array",                 ID_POPUP1_ARRAYS_SHEET
+            POPUP "Array functions"
+            BEGIN
+                MENUITEM "Count",                       ID_POPUP1_ARRAYS_ARRAYFUNCTIONS_COUNT
+
+                MENUITEM "Sum",                         ID_POPUP1_ARRAYS_ARRAYFUNCTIONS_SUM
+
+                MENUITEM "Avrg",                        ID_POPUP1_ARRAYS_ARRAYFUNCTIONS_AVRG
+
+            END
+        END
+        POPUP "Events"
+        BEGIN
+            MENUITEM "Start",                       ID_POPUP1_EVENTS_START
+            MENUITEM "Stop",                        ID_POPUP1_EVENTS_STOP
+            MENUITEM "Record",                      ID_POPUP1_EVENTS_RECORD
+            MENUITEM "Change value @",              ID_POPUP1_EVENTS_CHANGEVALUE
+
+            MENUITEM "Dump values",                 ID_POPUP1_EVENTS_DUMP
+            MENUITEM "Dump equations",              ID_POPUP1_EVENTS_DUMPEQUATIONS
+
+            MENUITEM "Iteration from-to",           ID_POPUP1_EVENTS_ITERATIONFROMTO
+
+            MENUITEM "Iteration series",            ID_POPUP1_EVENTS_ITERATIONSERIES
+
+            MENUITEM SEPARATOR
+            MENUITEM "Sync",                        ID_POPUP1_EVENTS_SYNC
+            MENUITEM "Pace",                        ID_POPUP1_EVENTS_PACE
+            MENUITEM "Real time",                   ID_POPUP1_EVENTS_REALTIME
+
+        END
+        POPUP "Equations"
+        BEGIN
+            MENUITEM "Ordinary",                    ID_POPUP1_EQUATIONS_ORDINARY
+
+            MENUITEM "Differential",                ID_POPUP1_EQUATIONS_DIFFERENTIAL
+
+            MENUITEM "Switch case",                 ID_POPUP1_EQUATIONS_SWITCHCASE
+
+            MENUITEM "Lookup",                      ID_POPUP1_EQUATIONS_LOOKUP
+
+        END
+        POPUP "Functions"
+        BEGIN
+            MENUITEM "Log",                         ID_POPUP1_FUNCTIONS_LOG
+            MENUITEM "Ln",                          ID_POPUP1_FUNCTIONS_LN
+            MENUITEM "Exp",                         ID_POPUP1_FUNCTIONS_EXP
+            MENUITEM "Abs",                         ID_POPUP1_FUNCTIONS_ABS
+            MENUITEM "Sin",                         ID_POPUP1_FUNCTIONS_SIN
+            MENUITEM "Cos",                         ID_POPUP1_FUNCTIONS_COS
+            MENUITEM "Tan",                         ID_POPUP1_FUNCTIONS_TAN
+            MENUITEM "ASin",                        ID_POPUP1_FUNCTIONS_ASIN
+            MENUITEM "ACos",                        ID_POPUP1_FUNCTIONS_ACOS
+            MENUITEM "ATan",                        ID_POPUP1_FUNCTIONS_ATAN
+            MENUITEM "Int",                         ID_POPUP1_FUNCTIONS_INT
+            MENUITEM "Intup",                       ID_POPUP1_FUNCTIONS_INTUP
+
+        END
+        POPUP "Indices"
+        BEGIN
+            MENUITEM "Define index",                ID_POPUP1_INDEX_DEFINE
+            MENUITEM "Expand here",                 ID_POPUP1_INDEX_EXPAND
+        END
+        POPUP "Solvers"
+        BEGIN
+            MENUITEM "Runge Kutta 3rd Order",       ID_POPUP1_SOLVER_RK3
+            MENUITEM "Runge Kutta 3rd Order variable step", 
+                                                    ID_POPUP1_SOLVER_RK3VS
+            MENUITEM "Runge Kutta 4th Order",       ID_POPUP1_SOLVER_RK4
+            MENUITEM "Runge Kutta 4th Order variable step", 
+                                                    ID_POPUP1_SOLVER_RK4VS
+            MENUITEM "Runge Kutta 4th Order variable step multi thread", 
+                                                    ID_POPUP1_SOLVER_RK4VSMT
+            MENUITEM "Runge Kutta 5th Order",       ID_POPUP1_SOLVER_RK5
+            MENUITEM "Runge Kutta 5th Order variable step", 
+                                                    ID_POPUP1_SOLVER_RK5VS
+            MENUITEM SEPARATOR
+            MENUITEM "Sequence from-to",            ID_POPUP1_SOLVER_SEQFROMTO
+
+            MENUITEM "Sequence series",             ID_POPUP1_SOLVER_SEQUENCESERIES
+
+            MENUITEM "Once",                        ID_POPUP1_SOLVERS_ONCE
+        END
+        POPUP "Macros"
+        BEGIN
+            MENUITEM "Insert header file",          ID_POPUP1_MACROS_INSERT
+            MENUITEM "Define limit type",           ID_POPUP1_MACROS_LIMIT
+            MENUITEM "Define variable type",        ID_POPUP1_MACROS_TYPE
+        END
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SYMLIXHIDDENDLG DIALOGEX 0, 0, 186, 95
+STYLE WS_POPUP
+EXSTYLE WS_EX_TRANSPARENT
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+END
+
+IDD_SYMRUNPROGRESSDLG DIALOGEX 0, 0, 190, 94
+STYLE DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_CLIPCHILDREN | WS_CAPTION
+CAPTION "Numerical catalyst run"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Cancel",IDCANCEL,131,74,50,14
+    LTEXT           "",IDC_STATIC_PROG,78,2,98,68,0,WS_EX_TRANSPARENT
+    CONTROL         206,IDC_LOGO,"Static",SS_BITMAP,5,11,54,63
+    LTEXT           "",IDC_STATIC_TIME,3,76,114,13,0,WS_EX_TRANSPARENT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_TOOLBAR1 TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_HELP_EDITOR
+    BUTTON      ID_HELP_SYNTAX
+    SEPARATOR
+    BUTTON      ID_FILE_RUN
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_LOGO1               BITMAP  DISCARDABLE     "res\\logo1.bmp"
+IDB_BITMAPNUMCATON      BITMAP  DISCARDABLE     "res\\CommandBut1.bmp"
+IDB_BITMAPNUMCATOFF     BITMAP  DISCARDABLE     "res\\CommandBut2.bmp"
+IDB_BITMAPMASK1         BITMAP  DISCARDABLE     "res\\CommandMask1.bmp"
+IDB_NUMCATTRADE         BITMAP  DISCARDABLE     "res\\numcattr.bmp"
+IDR_TOOLBAR1            BITMAP  DISCARDABLE     "res\\toolbar1.bmp"
+IDB_BITMAPHELP1         BITMAP  DISCARDABLE     "res\\bitmap1.bmp"
+IDB_BITMAPHELP1MASK     BITMAP  DISCARDABLE     "res\\bitmaphe.bmp"
+IDB_BITMAPRUN1          BITMAP  DISCARDABLE     "res\\bitmapru.bmp"
+IDB_BITMAPRUNMASK1      BITMAP  DISCARDABLE     "res\\bmp00001.bmp"
+IDB_BITMAPNUMCAT2007    BITMAP  DISCARDABLE     "res\\bitmapnu.bmp"
+IDB_BITMAPNUMCAT2007INACT BITMAP  DISCARDABLE     "res\\bmp00002.bmp"
+IDB_BITMAPNUMCATBUYNOW  BITMAP  DISCARDABLE     "res\\bmp00003.bmp"
+IDB_BITMAPBUYNOWICON    BITMAP  DISCARDABLE     "res\\bmp00004.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_SYMRUNPROGRESSDLG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 188
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_SYMLIX              REGISTRY DISCARDABLE    "Symlix.rgs"
+IDR_SYMLIXERROR         REGISTRY DISCARDABLE    "SymlixError.rgs"
+IDR_SYMLIXERRORRUN      REGISTRY DISCARDABLE    "SymlixErrorRun.rgs"
+IDR_SYMLIXEDITOR        REGISTRY DISCARDABLE    "SymlixEditor.rgs"
+IDR_ARDATAPOST          REGISTRY DISCARDABLE    "ARDataPost.rgs"
+IDR_ARRUNPROGRESS       REGISTRY DISCARDABLE    "ARRunProgress.rgs"
+IDR_NUMCATRESOURCE      REGISTRY DISCARDABLE    "NumCatResource.rgs"
+IDR_NUMCATEXCELLOCALRES REGISTRY DISCARDABLE    "NumCatExcelLocalRes.rgs"
+IDR_NUMCATDRM           REGISTRY DISCARDABLE    "NumCatDRM.rgs"
+IDR_ARL_DRM             REGISTRY DISCARDABLE    "ARL_DRM.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_RUN                  "Run the active document\nRun"
+END
+
+#endif    // English (U.K.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "Symlix.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

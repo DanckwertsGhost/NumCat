@@ -1,0 +1,33 @@
+// Adiabatic operation
+// ref Wicke E. and Onken H.U., "Statistical Fluctuations of Conversion and Temperature in an Adiabatic Fixed-Bed Reactor for CO Oxidation", Chem. Engng. Sci., 41, No 6, pp 1681-1687, (1986).
+
+dim c as {min=0,max=1}
+
+start t=0
+stop t>50
+
+start EA = 80
+start K0 = 1.64E9
+start U0 = 435.5
+start C0 =0.001
+start IR = 4
+start QT = 98
+
+start w=450
+start c=0.01
+
+R = K0*c*exp(-1*EA/(8.314E-3*w))
+
+// Use S1 and S2 so can monitor rate of change also ( not necessary )
+Rate_c = (C0-c)/IR-R
+Rate_w = (U0-w)/IR+QT*R/C0
+
+dc/dt = Rate_c //  the same as dc/dt = (C0-c)/IR-R but more efficient than calculating twice. 
+dw/dt = Rate_w
+
+solver RK4 step 1E-4 // Runge Kutta variable step method, 4th order.
+
+record t,c,w,R,Rate_c,Rate_w as "Simresults.csv" for t every 0.1
+
+// end of model
+

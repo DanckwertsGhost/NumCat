@@ -1,0 +1,26 @@
+HKCR
+{
+	Symlix.SymlixEditor.1 = s 'SymlixEditor Class'
+	{
+		CLSID = s '{E2CF0192-2445-44EA-A0D3-69804BADB96B}'
+	}
+	Symlix.SymlixEditor = s 'SymlixEditor Class'
+	{
+		CLSID = s '{E2CF0192-2445-44EA-A0D3-69804BADB96B}'
+		CurVer = s 'Symlix.SymlixEditor.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {E2CF0192-2445-44EA-A0D3-69804BADB96B} = s 'SymlixEditor Class'
+		{
+			ProgID = s 'Symlix.SymlixEditor.1'
+			VersionIndependentProgID = s 'Symlix.SymlixEditor'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{F236F3A6-7390-4601-AF3D-1E77D079E969}'
+		}
+	}
+}

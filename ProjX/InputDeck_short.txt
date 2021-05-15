@@ -1,0 +1,19 @@
+d2=-7 @ t=5
+// simple test deck for contrained values
+#include "c:\temp\testheader3.txt"
+// #define LimitType {min=0}
+
+dim x1 as LimitType
+dim d2 as LimitType
+
+start x1=-3
+
+stop t>10
+
+dx1/dt= -0.5
+d2=x1
+
+record t,x1,d2 as "c:\temp\testconstr1.csv" for t every 1
+
+solver RK4 step 2.5E-4
+

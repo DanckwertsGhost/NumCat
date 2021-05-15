@@ -1,0 +1,42 @@
+TEST INPUT FILE
+CREATED: 5Sep05 by TMR
+MODIFIED: 13Sep05 corrections to bring into line with CED model
+
+NOTES: Based on OXIDAT problem p303 Chemical Engineering Dynamics
+
+N=500
+G=60000
+KT=0.9E-9
+KR=2000
+COS=0.25E-3
+CA0=0.2
+//CINT=0.0001
+//TFIN=0.1
+
+// Had to add the following lines - really start should handle this
+CA=0.2 @ t=0
+CO=0 @ t=0
+CP=0 @ t=0
+
+start CA=0.2 // CA0
+start CO=0
+start CP=0
+
+KLA=KT*(N^3)*(G^0.5)
+// Inflence of N(RPM) and G(L/H) on KLA(1/H)
+RA=-KR*CA*CO // note RA is defined - but programme needs to appreciate it - BUG work on this.
+// KINETICS
+RO=0.5*RA
+RP=-0.5*RA
+// MASS BALANCE
+dCA/dt=RA
+dCO/dt=KLA*(COS-CO)+RO
+dCP/dt=RP
+solver RK4 step 0.0001
+
+record t,CA,CO,CP,KLA,RA as "ITest1Results.csv" for t every 0.01 // think this should be every 0.1 variable
+record t,CO as "ITest1Results2.csv" for t every 0.001 // think this should be every 0.1 variable
+regtest CA,0.198843,CO,0.30422E-4,CP,0.57855E-3 append "Regressiontests.txt" @ t=0.1 // is dependant on all other items
+
+start t=0
+stop t>0.1

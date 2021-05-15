@@ -1,0 +1,797 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+      <section name="ControlActivation.My.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+    </sectionGroup>
+    <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+      <section name="ControlActivation.My.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+    </sectionGroup>
+  </configSections>
+  <system.diagnostics>
+    <sources>
+      <!-- This section defines the logging configuration for My.Application.Log -->
+      <source name="DefaultSource" switchName="DefaultSwitch">
+        <listeners>
+          <add name="FileLog"/>
+          <!-- Uncomment the below section to write to the Application Event Log -->
+          <!--<add name="EventLog"/>-->
+        </listeners>
+      </source>
+    </sources>
+    <switches>
+      <add name="DefaultSwitch" value="Information" />
+    </switches>
+    <sharedListeners>
+      <add name="FileLog"
+           type="Microsoft.VisualBasic.Logging.FileLogTraceListener, Microsoft.VisualBasic, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
+           initializeData="FileLogWriter"/>
+      <!-- Uncomment the below section and replace APPLICATION_NAME with the name of your application to write to the Application Event Log -->
+      <!--<add name="EventLog" type="System.Diagnostics.EventLogTraceListener" initializeData="APPLICATION_NAME"/> -->
+    </sharedListeners>
+  </system.diagnostics>
+  <userSettings>
+    <ControlActivation.My.MySettings>
+      <setting name="Deactivate_Ask" serializeAs="String">
+        <value>True</value>
+      </setting>
+      <setting name="Application_Purchase_URL" serializeAs="String">
+        <value>http://sales.astonread.com</value>
+      </setting>
+      <setting name="Application_TermsAndConditions" serializeAs="String">
+        <value>Some Terms &amp; Conditions ...</value>
+      </setting>
+      <setting name="Application_Website_URL" serializeAs="String">
+        <value>http://www.numericalcatalyst.com/</value>
+      </setting>
+      <setting name="Text_PanelMain_SuccessfulRegistration_RegisterOnline"
+        serializeAs="String">
+        <value>Please register your application online.</value>
+      </setting>
+      <setting name="Text_PanelLeft_Website" serializeAs="String">
+        <value>WebSite</value>
+      </setting>
+      <setting name="Text_PanelLeft_EmailSupport" serializeAs="String">
+        <value>Email Support</value>
+      </setting>
+      <setting name="Text_PanelLeft_Telephone" serializeAs="String">
+        <value></value>
+      </setting>
+      <setting name="Text_PanelBottom_Help" serializeAs="String">
+        <value>Help</value>
+      </setting>
+      <setting name="Text_PanelBottom_Back" serializeAs="String">
+        <value>Back</value>
+      </setting>
+      <setting name="Text_PanelBottom_StartTrial" serializeAs="String">
+        <value>Start Trial</value>
+      </setting>
+      <setting name="Text_PanelBottom_Continue" serializeAs="String">
+        <value>Continue</value>
+      </setting>
+      <setting name="Text_PanelBottom_Cancel" serializeAs="String">
+        <value>Close</value>
+      </setting>
+      <setting name="Text_Day" serializeAs="String">
+        <value>Day</value>
+      </setting>
+      <setting name="Text_Days" serializeAs="String">
+        <value>Days</value>
+      </setting>
+      <setting name="Text_Title_ActivationRequired" serializeAs="String">
+        <value>Activation Required</value>
+      </setting>
+      <setting name="Text_Title_ActivateApplication" serializeAs="String">
+        <value>Activate</value>
+      </setting>
+      <setting name="Text_Title_SuccessfulActivation" serializeAs="String">
+        <value>Successful Activation</value>
+      </setting>
+      <setting name="Text_Title_TryApplication" serializeAs="String">
+        <value>Try</value>
+      </setting>
+      <setting name="Text_Title_DeActivateApplication" serializeAs="String">
+        <value>De-Activate</value>
+      </setting>
+      <setting name="Text_PanelMain_ActivationRequired_Info" serializeAs="String">
+        <value>Activation is required to register this product. Once a license has been activated on a computer, it cannot be used on another machine. By activating this license you will lock it to the current machine.</value>
+      </setting>
+      <setting name="Text_PanelMain_ActivationRequired_Activate" serializeAs="String">
+        <value>Activate</value>
+      </setting>
+      <setting name="Text_PanelMain_ActivationRequired_Try" serializeAs="String">
+        <value>Try</value>
+      </setting>
+      <setting name="Text_PanelMain_ActivationRequired_Buy" serializeAs="String">
+        <value>Buy</value>
+      </setting>
+      <setting name="Text_PanelMain_ActivateApplication_Activate" serializeAs="String">
+        <value>Activate</value>
+      </setting>
+      <setting name="Text_PanelMain_ActivateApplication_ManualActivate"
+        serializeAs="String">
+        <value>Manually activate using the phone and email</value>
+      </setting>
+      <setting name="Text_PanelMain_ActivateApplication_WebActivate"
+        serializeAs="String">
+        <value>Use the browser to get an unlock code</value>
+      </setting>
+      <setting name="Text_PanelMain_TryApplication_Info" serializeAs="String">
+        <value>An explanation of the trial process ...</value>
+      </setting>
+      <setting name="Text_PanelMain_TryApplication_TermsAndConditions"
+        serializeAs="String">
+        <value>Terms and Conditions:</value>
+      </setting>
+      <setting name="Text_PanelMain_TryApplication_Accept" serializeAs="String">
+        <value>Accept</value>
+      </setting>
+      <setting name="Text_PanelMain_TryApplication_Decline" serializeAs="String">
+        <value>Decline</value>
+      </setting>
+      <setting name="Text_PanelMain_TrialActivate_Activate" serializeAs="String">
+        <value>Activate</value>
+      </setting>
+      <setting name="Text_PanelMain_TrialActivate_Buy" serializeAs="String">
+        <value>Buy</value>
+      </setting>
+      <setting name="Text_PanelMain_DeActivateApplication_Info" serializeAs="String">
+        <value>This application has already been activated do you want to de-activate?</value>
+      </setting>
+      <setting name="Text_PanelMain_DeActivateApplication_Yes" serializeAs="String">
+        <value>YES</value>
+      </setting>
+      <setting name="Text_PanelMain_DeActivateApplication_No" serializeAs="String">
+        <value>NO</value>
+      </setting>
+      <setting name="Text_PanelMain_DeActivateApplication_Successful"
+        serializeAs="String">
+        <value>Successfully Removed License</value>
+      </setting>
+      <setting name="CA_Activating_Error" serializeAs="String">
+        <value>Error Activating Product. Returned Error</value>
+      </setting>
+      <setting name="CA_Removing_Error" serializeAs="String">
+        <value>Error Removing License. Returned Error</value>
+      </setting>
+      <setting name="CA_FILECHCK_MISSING" serializeAs="String">
+        <value>"filechck.dll" missing.</value>
+      </setting>
+      <setting name="CA_Application_Already_Activated" serializeAs="String">
+        <value>Application already activated.</value>
+      </setting>
+      <setting name="CA_License_Only_Numbers" serializeAs="String">
+        <value>License Number can only be numbers.</value>
+      </setting>
+      <setting name="CA_License_Not_Enough_Digits" serializeAs="String">
+        <value>You did not enter enough digits.</value>
+      </setting>
+      <setting name="CA_File_Missing" serializeAs="String">
+        <value>File missing.</value>
+      </setting>
+      <setting name="CA_Cannot_Retrieve_Deactiavate" serializeAs="String">
+        <value>Cannot retrieve proper license key to deactivate.</value>
+      </setting>
+      <setting name="CA_Information" serializeAs="String">
+        <value>Information</value>
+      </setting>
+      <setting name="Text_Title_RegisterApplication" serializeAs="String">
+        <value>Registration</value>
+      </setting>
+      <setting name="Text_Registration_Required" serializeAs="String">
+        <value>Registration is required, please register now</value>
+      </setting>
+      <setting name="Text_Registration_option" serializeAs="String">
+        <value>Do you wish to register?</value>
+      </setting>
+      <setting name="Application_Force_Registration" serializeAs="String">
+        <value>During</value>
+      </setting>
+      <setting name="Trial_Period_Days" serializeAs="String">
+        <value>15</value>
+      </setting>
+      <setting name="Text_PanelBottom_Exit" serializeAs="String">
+        <value>Exit</value>
+      </setting>
+      <setting name="CA_Eval_Expired" serializeAs="String">
+        <value>Evaluation period has expired</value>
+      </setting>
+      <setting name="Text_PanelMain_Paste" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="Text_Application_Not_Present" serializeAs="String">
+        <value>Cannot Launch Application</value>
+      </setting>
+      <setting name="CA_Show_Try" serializeAs="String">
+        <value>True</value>
+      </setting>
+      <setting name="CA_Show_Buy" serializeAs="String">
+        <value>True</value>
+      </setting>
+      <setting name="CA_Language" serializeAs="String">
+        <value>en</value>
+      </setting>
+      <setting name="CA_Registration_Header_Text" serializeAs="String">
+        <value>Please ensure you register all your details and email address so that Nalpeiron can contact you with essential details to use this product.</value>
+      </setting>
+      <setting name="CA_Registration_Header_Height" serializeAs="String">
+        <value>75</value>
+      </setting>
+      <setting name="Text_PanelMain_CheckForUpdates" serializeAs="String">
+        <value>Check for Updates</value>
+      </setting>
+      <setting name="CA_AutoCheckForUpdates" serializeAs="String">
+        <value>True</value>
+      </setting>
+      <setting name="CA_Text_Fail_Check" serializeAs="String">
+        <value>Failed to check for updates</value>
+      </setting>
+      <setting name="Application_Icon" serializeAs="String">
+        <value>boxsmall.jpg</value>
+      </setting>
+      <setting name="Support_URL" serializeAs="String">
+        <value>www.numericalcatalyst.com</value>
+      </setting>
+      <setting name="Support_Email" serializeAs="String">
+        <value>support@numericalcatalyst.com</value>
+      </setting>
+      <setting name="Support_Phone" serializeAs="String">
+        <value></value>
+      </setting>
+      <setting name="CA_Help_Filename" serializeAs="String">
+        <value>http://www.internetactivation.com/help/enduser/controlactivation.html</value>
+      </setting>
+      <setting name="Application_Exe" serializeAs="String">
+        <value>NumCat.dll</value>
+      </setting>
+      <setting name="Text_PanelMain_About" serializeAs="String">
+        <value>About Control Activation</value>
+      </setting>
+      <setting name="CA_Text_Success_Check" serializeAs="String">
+        <value>Successfully checked for updates (if any are available a seperate wizard will show)</value>
+      </setting>
+      <setting name="Text_License_Controller_Not_Present" serializeAs="String">
+        <value>Cannot Launch License Controller</value>
+      </setting>
+      <setting name="Text_PanelMain_ActivateApplication_Notes" serializeAs="String">
+        <value>Please take a few moments to activate your product now.  No personal data is sent during Activation.  It helps prevent illegal copying of this software and helps ensure you have   a genuine copy of the Software.   This product will attempt to use the Internet during activation.  If you have a firewall or proxy server this may prevent this process.  If prompted to unblock 'control activation.exe' please do so or you   will need to unlock this product via the phone using the 'Unlock' button above.   Please enter or paste the numeric license code provided in the box below and click 'activate'.
+
+Manual licensing allows you to call/e-mail your PC details in order to get an 'Unlocking Code' rather than use the Internet.</value>
+      </setting>
+      <setting name="Text_Title_UnSuccessfulActivation" serializeAs="String">
+        <value>UnSuccessful Activation</value>
+      </setting>
+      <setting name="Text_PanelMain_TrialActivate_Try" serializeAs="String">
+        <value>Try</value>
+      </setting>
+      <setting name="Text_TrialLeft" serializeAs="String">
+        <value>Trial</value>
+      </setting>
+      <setting name="Text_TrialLeft1" serializeAs="String">
+        <value>[PeriodType] Left [PeriodLength] day</value>
+      </setting>
+      <setting name="Text_TrialLeft2" serializeAs="String">
+        <value>[PeriodType] Left [PeriodLength] days</value>
+      </setting>
+      <setting name="Text_TrialLeft3" serializeAs="String">
+        <value>[PeriodType] Left [PeriodLength] use</value>
+      </setting>
+      <setting name="Text_TrialLeft4" serializeAs="String">
+        <value>[PeriodType] Left [PeriodLength] uses</value>
+      </setting>
+      <setting name="Text_LeaseLeft" serializeAs="String">
+        <value>Lease</value>
+      </setting>
+      <setting name="Text_Title_TrialApplication" serializeAs="String">
+        <value>[TrialType]</value>
+      </setting>
+      <setting name="Text_PanelMain_TrialActivate_Try1" serializeAs="String">
+        <value>[PeriodType] [Application] for [PeriodLength] day</value>
+      </setting>
+      <setting name="Text_PanelMain_TrialActivate_Try3" serializeAs="String">
+        <value>[PeriodType] [Application] for [PeriodLength] use</value>
+      </setting>
+      <setting name="Text_PanelMain_TrialActivate_Try4" serializeAs="String">
+        <value>[PeriodType] [Application] for [PeriodLength] uses</value>
+      </setting>
+      <setting name="Text_Email_Client_Not_Present" serializeAs="String">
+        <value>Email client not present.</value>
+      </setting>
+      <setting name="Text_PanelMain_ManualDeActivation_Notes" serializeAs="String">
+        <value>You can remove your license and prove you have removed it by simply clicking the 'Remove'.
+
+Send both the 'Installation ID' and the 'Proof of removal code' to the vendor to prove the license has been removed.
+
+WARNING:  Do not use this function to try to move to a new PC as it will destroy the license.</value>
+      </setting>
+      <setting name="Text_Title_UnlockApplication" serializeAs="String">
+        <value>Unlock</value>
+      </setting>
+      <setting name="Text_Status_Close" serializeAs="String">
+        <value>Close</value>
+      </setting>
+      <setting name="Text_PanelMain_DeActivateApplication_ManualDeactivate"
+        serializeAs="String">
+        <value>Manual de-activation</value>
+      </setting>
+      <setting name="Text_PanelMain_ActivateApplication_ManualUnlock"
+        serializeAs="String">
+        <value>Unlock using the phone and email</value>
+      </setting>
+      <setting name="CA_UnlockCode_Only_Numbers" serializeAs="String">
+        <value>Unlock Code can only be numbers.</value>
+      </setting>
+      <setting name="CA_UnlockCode_Not_Enough_Digits" serializeAs="String">
+        <value>Unlock Code - You did not enter enough digits.</value>
+      </setting>
+      <setting name="Text_PanelMain_ActivateApplication_UnlockCode"
+        serializeAs="String">
+        <value>Unlock Code:</value>
+      </setting>
+      <setting name="Text_PanelMain_ActivateApplication_InstallationID"
+        serializeAs="String">
+        <value>Installation ID:</value>
+      </setting>
+      <setting name="Text_PanelMain_ManualDeactivation_Remove" serializeAs="String">
+        <value>Remove</value>
+      </setting>
+      <setting name="Text_PanelMain_ManualDeactivation_ProofRemoval"
+        serializeAs="String">
+        <value>(Proof of Removal Code)</value>
+      </setting>
+      <setting name="Text_Status_LicenseStatus" serializeAs="String">
+        <value>STATUS:</value>
+      </setting>
+      <setting name="Text_Status_InstallationID" serializeAs="String">
+        <value>Installation ID:</value>
+      </setting>
+      <setting name="Text_Status_ComputerID" serializeAs="String">
+        <value>Computer ID:</value>
+      </setting>
+      <setting name="Text_Status_UseProxy" serializeAs="String">
+        <value>Use a proxy server to activate and deactivate</value>
+      </setting>
+      <setting name="Text_Status_ProxyServer" serializeAs="String">
+        <value>Proxy Server name or address:</value>
+      </setting>
+      <setting name="Text_Status_ProxyPort" serializeAs="String">
+        <value>Port:</value>
+      </setting>
+      <setting name="Text_Status_Diagnostics" serializeAs="String">
+        <value>Diagnostics</value>
+      </setting>
+      <setting name="Text_Status_Expires" serializeAs="String">
+        <value>Expires:</value>
+      </setting>
+      <setting name="CA_Proxy_Server_Invalid" serializeAs="String">
+        <value>Invalid Proxy Server name or Address.</value>
+      </setting>
+      <setting name="CA_Proxy_Port_Invalid" serializeAs="String">
+        <value>Proxy Port is invalid.</value>
+      </setting>
+      <setting name="CA_Registration_Mandatory_Text" serializeAs="String">
+        <value>Please enter a value.</value>
+      </setting>
+      <setting name="CA_Registration_Mandatory_Select" serializeAs="String">
+        <value>Please select a value.</value>
+      </setting>
+      <setting name="CA_Registration_Password_Mismatch" serializeAs="String">
+        <value>Password and confirm password must match.</value>
+      </setting>
+      <setting name="CA_Registration_Username_NotUnique" serializeAs="String">
+        <value>Username already in use.</value>
+      </setting>
+      <setting name="CA_Status_No_License" serializeAs="String">
+        <value>No License.</value>
+      </setting>
+      <setting name="CA_Status_Unlimited_License" serializeAs="String">
+        <value>Unlimited License.</value>
+      </setting>
+      <setting name="CA_Status_Product_Leased" serializeAs="String">
+        <value>Product Leased.</value>
+      </setting>
+      <setting name="CA_Status_Product_Limited_Uses" serializeAs="String">
+        <value>Product Licensed - Limited Uses.</value>
+      </setting>
+      <setting name="CA_Status_Evaluation_Mode" serializeAs="String">
+        <value>Evaluation Mode.</value>
+      </setting>
+      <setting name="CA_Status_Server_License" serializeAs="String">
+        <value>Server License.</value>
+      </setting>
+      <setting name="CA_Status_Evaluation_Expired" serializeAs="String">
+        <value>Evaluation Expired.</value>
+      </setting>
+      <setting name="CA_Status_Lease_Expired" serializeAs="String">
+        <value>Lease Expired.</value>
+      </setting>
+      <setting name="CA_Status_Licensed_No_Uses_Left" serializeAs="String">
+        <value>Product Licensed:  No Uses Left.</value>
+      </setting>
+      <setting name="CA_Status_Leased_Limited_Uses" serializeAs="String">
+        <value>Product Leased with limited uses.</value>
+      </setting>
+      <setting name="CA_Status_License_Returned" serializeAs="String">
+        <value>License was returned to the server.</value>
+      </setting>
+      <setting name="CA_Checking_Error" serializeAs="String">
+        <value>Error CheckingLicense. Returned Error</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_1" serializeAs="String">
+        <value>Missing parameter.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_2" serializeAs="String">
+        <value>Bad parameter.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_3" serializeAs="String">
+        <value>Bad unlock code.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_4" serializeAs="String">
+        <value>Product not authorized.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_5" serializeAs="String">
+        <value>Demo expired.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_6" serializeAs="String">
+        <value>Evaluation uses expired.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_7" serializeAs="String">
+        <value>Lease expired.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_8" serializeAs="String">
+        <value>Uses exhausted.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_11" serializeAs="String">
+        <value>Service install failed.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_12" serializeAs="String">
+        <value>Service failure.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_13" serializeAs="String">
+        <value>Hard drive read failure.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_14" serializeAs="String">
+        <value>Hard drive write failure.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_15" serializeAs="String">
+        <value>No room for entry.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_16" serializeAs="String">
+        <value>Find entry failure.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_19" serializeAs="String">
+        <value>Error getting unlocking code.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_20" serializeAs="String">
+        <value>Invalid license number.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_21" serializeAs="String">
+        <value>Invalid Installation ID.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_22" serializeAs="String">
+        <value>Wrong license number.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_23" serializeAs="String">
+        <value>License number already used.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_24" serializeAs="String">
+        <value>Cannot access web site.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_25" serializeAs="String">
+        <value>Concurrent users exceeded.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_26" serializeAs="String">
+        <value>Unable to read from media.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_27" serializeAs="String">
+        <value>Unable to write to media.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_28" serializeAs="String">
+        <value>Invalid media data.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_29" serializeAs="String">
+        <value>License already installed.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_30" serializeAs="String">
+        <value>Unknown error.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_31" serializeAs="String">
+        <value>Inappropriate function call.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_32" serializeAs="String">
+        <value>License already returned.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_33" serializeAs="String">
+        <value>DLL not customized.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_34" serializeAs="String">
+        <value>Undefined license condition.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_35" serializeAs="String">
+        <value>Subtraction amount greater than uses.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_36" serializeAs="String">
+        <value>User is changing date.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_37" serializeAs="String">
+        <value>No drive present.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_38" serializeAs="String">
+        <value>Not initialized.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_55" serializeAs="String">
+        <value>Write does not verify.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_56" serializeAs="String">
+        <value>Unable verify write.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_59" serializeAs="String">
+        <value>Function not allowed.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_63" serializeAs="String">
+        <value>Service missing.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_64" serializeAs="String">
+        <value>Error getting disk specifications.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_65" serializeAs="String">
+        <value>Service version not current.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_67" serializeAs="String">
+        <value>Computer already contains license.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_68" serializeAs="String">
+        <value>Cannot connect to Internet.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_69" serializeAs="String">
+        <value>License number not authorized.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_70" serializeAs="String">
+        <value>Error getting removal code.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_71" serializeAs="String">
+        <value>Vmware environment (VMware).</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_72" serializeAs="String">
+        <value>Vpc environment (Microsoft).</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_73" serializeAs="String">
+        <value>Customer registration required.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_74" serializeAs="String">
+        <value>Problem with Internet connection.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_75" serializeAs="String">
+        <value>Cannot connect to web site.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_76" serializeAs="String">
+        <value>Socket error 1.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_77" serializeAs="String">
+        <value>Socket error 2.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_78" serializeAs="String">
+        <value>Cannot send data.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_79" serializeAs="String">
+        <value>Cannot receive data.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_80" serializeAs="String">
+        <value>License read failure.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_81" serializeAs="String">
+        <value>License write failure.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_82" serializeAs="String">
+        <value>Media initialized on drive a.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_83" serializeAs="String">
+        <value>No hard drives found.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_84" serializeAs="String">
+        <value>Wrong computer.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_86" serializeAs="String">
+        <value>Table error.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_87" serializeAs="String">
+        <value>Win98 or ME.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_88" serializeAs="String">
+        <value>Demo time expired.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_89" serializeAs="String">
+        <value>User is changing time.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_98" serializeAs="String">
+        <value>Data stream was corrupted during transmission.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_99" serializeAs="String">
+        <value>Computer is backdated.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_100" serializeAs="String">
+        <value>Internet connection required.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_101" serializeAs="String">
+        <value>License activated on different computer.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_102" serializeAs="String">
+        <value>Unlocking Keys Not Allowed. Product can only be activated.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_103" serializeAs="String">
+        <value>Moving License Not Permitted. License may not be moved with a flash drive.</value>
+      </setting>
+      <setting name="Text_Internet_Connection_Not_Present" serializeAs="String">
+        <value>Internet Connection Not Present.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_17" serializeAs="String">
+        <value>Internet DLL not present.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_18" serializeAs="String">
+        <value>Cannot load Internet DLL.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_39" serializeAs="String">
+        <value>DLLNT.dll is missing.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_40" serializeAs="String">
+        <value>DLL9X.dll is missing.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_41" serializeAs="String">
+        <value>The file "USBDLL9X.DLL" is missing.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_53" serializeAs="String">
+        <value>The file ASTDLL.dll is missing.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_54" serializeAs="String">
+        <value>ASTDLL.dll is the wrong version.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_85" serializeAs="String">
+        <value>DLLNT is not the current version.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_9" serializeAs="String">
+        <value>Cannot open drive.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_10" serializeAs="String">
+        <value>Cannot find hard drive.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_57" serializeAs="String">
+        <value>No license on USB drive.</value>
+      </setting>
+      <setting name="Text_PanelMain_TrialActivate_Deactivate" serializeAs="String">
+        <value>De-activate</value>
+      </setting>
+      <setting name="Text_PanelMain_DeActivateApplication_Notes" serializeAs="String">
+        <value>De-Activation allows you to return your license to the server for storage and re-use. This allows you to quickly and easily move the license to an alternate machine. If you plan to keep using this machine but wish to re-format using Windows there is no need to move the license.
+        
+Once de-activated your program will no longer run on this machine until you re-activate or install the software on a new machine and run the activation process on the new one.
+        
+This product will attempt to use the Internet during de-activation; if you have a firewall or proxy server this may prevent this process. If prompted to unblock ‘control activation.exe’ please do so.
+        
+Please note that the license code provided will be saved on this machine and should you wish to activate again, simply choose the Internet Activate option on the toolbar and click ‘activate’.  The system will use your locally stored code.
+        </value>
+      </setting>
+      <setting name="Application_Register_URL" serializeAs="String">
+        <value>http://www.internetactivation.com/ECOSYSTEM/activationserver/tiactivate/checkreg.aspx</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_107" serializeAs="String">
+        <value>Hard drive does not read reliably.</value>
+      </setting>
+      <setting name="CA_CPROT_ERROR_RETURN_CODE_108" serializeAs="String">
+        <value>Insufficient permissions.</value>
+      </setting>
+      <setting name="Text_PanelMain_ActivateApplication_EnterLicenseCode"
+        serializeAs="String">
+        <value>Please enter your license code below and click activate.</value>
+      </setting>
+      <setting name="Text_PanelMain_ActivateApplication_EnterUnlockCode"
+        serializeAs="String">
+        <value>Please enter your Unlock Code below and click activate.</value>
+      </setting>
+      <setting name="Application_Name" serializeAs="String">
+        <value>Numerical Catalyst</value>
+      </setting>
+      <setting name="Text_PanelMain_ActivateApplication_LicenseNumber"
+        serializeAs="String">
+        <value>Username:</value>
+      </setting>
+      <setting name="CA_InternetCheck_Utility_Missing" serializeAs="String">
+        <value>Internet checking utility 'Connection.exe' missing.</value>
+      </setting>
+      <setting name="CA_InternetCheck_Utility_TimedOut" serializeAs="String">
+        <value>Internet checking utility timed out.</value>
+      </setting>
+      <setting name="CA_InternetCheck_Port" serializeAs="String">
+        <value>Port:</value>
+      </setting>
+      <setting name="CA_InternetCheck_Port_Invalid" serializeAs="String">
+        <value>Internet Check Port is invalid.</value>
+      </setting>
+      <setting name="CA_InternetCheck_Status_Internet_Connection" serializeAs="String">
+        <value>Internet Connection Present.</value>
+      </setting>
+      <setting name="CA_InternetCheck_Status_No_Internet_Connection"
+        serializeAs="String">
+        <value>Internet Connection Not Present.</value>
+      </setting>
+      <setting name="CA_InternetCheck_Activation_No_Internet" serializeAs="String">
+        <value>Internet Connection Not Present.
+
+In order to activate this product please ensure you can connect to the Internet and try again. If you don’t wish to connect via the Internet please contact your publisher for non-internet activation methods or see the manual for details.</value>
+      </setting>
+      <setting name="CA_InternetCheck_DeActivation_No_Internet" serializeAs="String">
+        <value>Internet Connection Not Present.
+
+In order to de-activate this product please ensure you can connect to the Internet and try again. If you don’t wish to connect via the Internet please contact your publisher for non-internet de-activation methods or see the manual for details.</value>
+      </setting>
+      <setting name="Text_PanelMain_DeActivateApplication_Remove" serializeAs="String">
+        <value>Remove</value>
+      </setting>
+      <setting name="Text_PanelMain_TrialActivate_Try2" serializeAs="String">
+        <value>[PeriodType] [Application] for [PeriodLength] days</value>
+      </setting>
+      <setting name="Flag_PanelMain_ActivateApplication_Show_Option1"
+        serializeAs="String">
+        <value>True</value>
+      </setting>
+      <setting name="Flag_PanelMain_DeActivateApplication_Show_Option1"
+        serializeAs="String">
+        <value>True</value>
+      </setting>
+      <setting name="Flag_PanelMain_ActivateApplication_Show_Option2"
+        serializeAs="String">
+        <value>True</value>
+      </setting>
+      <setting name="Flag_PanelMain_DeActivateApplication_Show_Option2"
+        serializeAs="String">
+        <value>True</value>
+      </setting>
+      <setting name="CA_InternetCheck_Check_Connection" serializeAs="String">
+        <value>False</value>
+      </setting>
+      <setting name="Text_PanelMain_Registration_AlreadyRegistered"
+        serializeAs="String">
+        <value>Already Registered?</value>
+      </setting>
+      <setting name="Text_PanelMain_Registration_EnterUsernamePassword"
+        serializeAs="String">
+        <value>Please enter your Username and Password below and click Register.</value>
+      </setting>
+      <setting name="Text_PanelMain_Registration_Username" serializeAs="String">
+        <value>Username:</value>
+      </setting>
+      <setting name="Text_PanelMain_Registration_Password" serializeAs="String">
+        <value>Password:</value>
+      </setting>
+      <setting name="Text_PanelMain_Registration_NotRegistered" serializeAs="String">
+        <value>Not Registered?</value>
+      </setting>
+      <setting name="Text_PanelMain_Registration_EnterRegistration"
+        serializeAs="String">
+        <value>Please enter your registration details by clicking Register Now.</value>
+      </setting>
+      <setting name="Text_PanelMain_Registration_Register" serializeAs="String">
+        <value>Register</value>
+      </setting>
+      <setting name="Text_PanelMain_Registration_RegisterNow" serializeAs="String">
+        <value>Register Now</value>
+      </setting>
+      <setting name="Text_PanelMain_Registration_InvalidUsername" serializeAs="String">
+        <value>Registered Username is invalid.</value>
+      </setting>
+      <setting name="Text_PanelMain_Registration_InvalidPassword" serializeAs="String">
+        <value>Registered Password is invalid.</value>
+      </setting>
+      <setting name="Text_PanelMain_Registration_InvalidUsernameAndPassword"
+        serializeAs="String">
+        <value>Invalid username and password. </value>
+      </setting>
+    </ControlActivation.My.MySettings>
+  </userSettings>
+  <applicationSettings>
+    <ControlActivation.My.MySettings>
+      <setting name="ControlActivation_LiveCA_ControlActivation" serializeAs="String">
+        <value>http://www.internetactivation.com/ECOSYSTEM/ControlActivation.asmx</value>
+      </setting>
+    </ControlActivation.My.MySettings>
+  </applicationSettings>
+</configuration>

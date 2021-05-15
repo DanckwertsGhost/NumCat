@@ -1,0 +1,14 @@
+Requirements:
+
+Solver fluid flow pressure loss simulation
+Lookup tables of data
+Handle arrays
+Strong types with limited scope
+Generic models - eg pumps, pipes etc
+Conditional statements
+Handle multiple runs for varying input conditions
+Reverse from one set of conditions to possible starting conditions
+Lipov stability checks
+Thermodynamic libraries
+COM interface for thermo libraries.
+Visualisation.

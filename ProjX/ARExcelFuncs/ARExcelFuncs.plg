@@ -1,0 +1,73 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ARExcelFuncs - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\tim\LOCALS~1\Temp\RSPD4.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GR /GX /ZI /Od /D "_DEBUG" /D "_MBCS" /D "WIN32" /D "_WINDOWS" /D "_USRDLL" /D "_AREXCELFUNC" /FR"Debug/" /Fp"Debug/ARExcelFuncs.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Inetpub\ftproot\cpp_new\ProjX\ARExcelFuncs\ARExcelStream.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\tim\LOCALS~1\Temp\RSPD4.tmp" 
+Creating temporary file "C:\DOCUME~1\tim\LOCALS~1\Temp\RSPD5.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/ARExcelFuncs.pdb" /debug /machine:I386 /def:".\ARExcelFuncs.def" /out:"Debug/ARExcelFuncs.dll" /implib:"Debug/ARExcelFuncs.lib" /pdbtype:sept 
+.\Debug\ARExcelFuncs.obj
+.\Debug\ARExcelStream.obj
+.\Debug\ARFileReader.obj
+.\Debug\ARFuncs.obj
+.\Debug\Cell.obj
+.\Debug\CellFactory.obj
+.\Debug\csvHolder.obj
+.\Debug\csvLookup.obj
+.\Debug\csvNumArray.obj
+.\Debug\EmptyCell.obj
+.\Debug\NumCell.obj
+.\Debug\StdAfx.obj
+.\Debug\StringCell.obj
+.\Debug\ARExcelFuncs.res
+]
+Creating command line "link.exe @C:\DOCUME~1\tim\LOCALS~1\Temp\RSPD5.tmp"
+Creating temporary file "C:\DOCUME~1\tim\LOCALS~1\Temp\RSPD6.bat" with contents
+[
+@echo off
+regsvr32 /s /c ".\Debug\ARExcelFuncs.dll"
+echo regsvr32 exec. time > ".\Debug\regsvr32.trg"
+]
+Creating command line "C:\DOCUME~1\tim\LOCALS~1\Temp\RSPD6.bat"
+Compiling...
+ARExcelStream.cpp
+Linking...
+   Creating library Debug/ARExcelFuncs.lib and object Debug/ARExcelFuncs.exp
+<h3>Output Window</h3>
+Performing registration
+Creating temporary file "C:\DOCUME~1\tim\LOCALS~1\Temp\RSPDA.tmp" with contents
+[
+/nologo /o"Debug/ARExcelFuncs.bsc" 
+.\Debug\StdAfx.sbr
+.\Debug\ARExcelFuncs.sbr
+.\Debug\ARExcelStream.sbr
+.\Debug\ARFileReader.sbr
+.\Debug\ARFuncs.sbr
+.\Debug\Cell.sbr
+.\Debug\CellFactory.sbr
+.\Debug\csvHolder.sbr
+.\Debug\csvLookup.sbr
+.\Debug\csvNumArray.sbr
+.\Debug\EmptyCell.sbr
+.\Debug\NumCell.sbr
+.\Debug\StringCell.sbr]
+Creating command line "bscmake.exe @C:\DOCUME~1\tim\LOCALS~1\Temp\RSPDA.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+ARExcelFuncs.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

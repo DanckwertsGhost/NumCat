@@ -1,0 +1,16 @@
+
+start year = 0
+year'= year+1
+stop year >5
+
+prodyr1 = year
+
+lookup prod1 alias "WellProd" from prodyr1 alias "year" in "c:\temp\ProductionForecast.csv"
+lookup WellProd from year in "c:\temp\ProductionForecast.csv"
+
+
+advance
+
+record year,prod1,WellProd as "c:\temp\prod1.csv" for year every 1
+
+

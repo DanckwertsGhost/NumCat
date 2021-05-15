@@ -1,0 +1,41 @@
+j=(12-6)
+j=12-6
+j=((12-6)
+j=0@t=-100
+10=j@t=-99
+g=10 @ t=0
+
+// Need to think through language for events etc
+
+j=((12-6)
+da\dt=a-b/t
+j= // should produce an error
+s=f+10E6
+// Simulated input deck
+
+// test comments
+// a = B+C (Should be ignored)
+
+// test assignment line
+a=10 @ t=0
+
+// test derviative equation
+da/dt=sin(t/PI())
+da/dt=sin(t/PI())
+// test algebraic equation
+b=a+10
+gu=a*4
+
+//negative number test
+c=-10
+d=10E04
+e=10E-99
+a bc c b
+h=c+d-e*-a
+
+i=
+j= // should produce an error
+5= c+d// should produce an error
+i=(12+f)
+
+// Add lookup table

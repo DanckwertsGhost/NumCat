@@ -1,0 +1,26 @@
+HKCR
+{
+	ARExcelFuncs.ARExcelStream.1 = s 'ARExcelStream Class'
+	{
+		CLSID = s '{C18BB11A-5500-4B46-8B44-AA2D8FF281E4}'
+	}
+	ARExcelFuncs.ARExcelStream = s 'ARExcelStream Class'
+	{
+		CLSID = s '{C18BB11A-5500-4B46-8B44-AA2D8FF281E4}'
+		CurVer = s 'ARExcelFuncs.ARExcelStream.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C18BB11A-5500-4B46-8B44-AA2D8FF281E4} = s 'ARExcelStream Class'
+		{
+			ProgID = s 'ARExcelFuncs.ARExcelStream.1'
+			VersionIndependentProgID = s 'ARExcelFuncs.ARExcelStream'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{DC44711E-B32A-4FA5-AEB3-9CF29987E8ED}'
+		}
+	}
+}

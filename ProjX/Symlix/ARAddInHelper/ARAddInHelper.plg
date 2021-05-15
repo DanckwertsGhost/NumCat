@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ARAddInHelper - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x809 /fo"Release/ARAddInHelper.res" /d "NDEBUG" "C:\Inetpub\ftproot\cpp_new\ProjX\SYMLIX\ARAddInHelper\ARAddInHelper.rc"" 
+Creating temporary file "C:\DOCUME~1\tim\LOCALS~1\Temp\RSPA4.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "STRICT" /D "x_ATL_MIN_CRT" /D "_ATL_STATIC_REGISTRY" /Fp"Release/ARAddInHelper.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Inetpub\ftproot\cpp_new\ProjX\SYMLIX\ARAddInHelper\aboutdlg.cpp"
+"C:\Inetpub\ftproot\cpp_new\ProjX\SYMLIX\ARAddInHelper\ARAddInHelper.cpp"
+"C:\Inetpub\ftproot\cpp_new\ProjX\Symlix\DispParam.cpp"
+"C:\Inetpub\ftproot\cpp_new\ProjX\SYMLIX\ARAddInHelper\maindlg.cpp"
+"C:\Inetpub\ftproot\cpp_new\ProjX\SYMLIX\ARAddInHelper\ManageExcelAddIn.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\tim\LOCALS~1\Temp\RSPA4.tmp" 
+Creating temporary file "C:\DOCUME~1\tim\LOCALS~1\Temp\RSPA5.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "STRICT" /D "x_ATL_MIN_CRT" /D "_ATL_STATIC_REGISTRY" /Fp"Release/ARAddInHelper.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Inetpub\ftproot\cpp_new\ProjX\SYMLIX\ARAddInHelper\stdafx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\tim\LOCALS~1\Temp\RSPA5.tmp" 
+Creating temporary file "C:\DOCUME~1\tim\LOCALS~1\Temp\RSPA6.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/ARAddInHelper.pdb" /machine:I386 /out:"Release/ARAddInHelper.exe" 
+.\Release\aboutdlg.obj
+.\Release\ARAddInHelper.obj
+.\Release\DispParam.obj
+.\Release\maindlg.obj
+.\Release\ManageExcelAddIn.obj
+.\Release\stdafx.obj
+.\Release\ARAddInHelper.res
+]
+Creating command line "link.exe @C:\DOCUME~1\tim\LOCALS~1\Temp\RSPA6.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+stdafx.cpp
+Compiling...
+aboutdlg.cpp
+ARAddInHelper.cpp
+DispParam.cpp
+maindlg.cpp
+ManageExcelAddIn.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+ARAddInHelper.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,16 @@
+// Basic input deck that is expected to pass
+
+// equations
+dx1/dt = s*(-x1+x2)
+dx2/dt = r*x1-x2-x1*x3
+dx3/dt = -b*x3+x1*x2
+
+x1=-16.764099 @ t=0
+x2=-21.469 @ t=0
+x3=5 @ t=0
+
+//runs for 30 secs
+
+s=10
+r=28
+b=2.400001
